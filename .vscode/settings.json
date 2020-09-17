@@ -1,0 +1,23 @@
+{
+  "workbench.activityBar.visible": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.statusBar.visible": true,
+  "editor.minimap.enabled": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "window.zoomLevel": 2,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.tsdk": "",
+  "breadcrumbs.enabled": true,
+  "files.associations": {
+    "*.sqlite": "sql"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // "editor.formatOnSave": true,
+  "notebook.displayOrder": []
+}
