@@ -5,6 +5,7 @@ import * as serviceWorker from './serviceWorker'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { BrowserRouter } from 'react-router-dom'
+import 'styles/main.scss'
 
 const client = new ApolloClient({
   uri: 'http://localhost:5001/react-rental-db23c/us-central1/graphql',
