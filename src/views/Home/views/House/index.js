@@ -3,6 +3,7 @@ import React from 'react'
 import classnames from 'classnames/bind'
 
 // Components
+import Map from './components/Map'
 
 // Style
 import styles from './style.module.scss'
@@ -13,7 +14,11 @@ const cx = classnames.bind(styles)
 export const propTypes = {}
 
 function House(props) {
-  return <div className={cx('house')}>House</div>
+  return (
+    <div className={cx('house')}>
+      <Map />
+    </div>
+  )
 }
 
 House.propTypes = propTypes
