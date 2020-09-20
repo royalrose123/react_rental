@@ -275,6 +275,24 @@ module.exports = function (webpackEnv) {
           'react-dom$': 'react-dom/profiling',
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
+        // 將 react 裡的 globalState 放入 alias 中
+        globalState: path.resolve(__dirname, '../src/globalState/'),
+        globalStateReducer: path.resolve(__dirname, '../src/globalState/reducers'),
+        // 將 utils 放入 alias 中
+        utils: path.resolve(__dirname, '../src/utils/'),
+        // 將 api 放入 alias 中
+        api: path.resolve(__dirname, '../src/api/'),
+        // 將 assets 放入 alias 中
+        assets: path.resolve(__dirname, '../src/assets/'),
+        // 將 styles 放入 alias 中
+        styles: path.resolve(__dirname, '../src/styles/'),
+        // 將 effects 放入 alias 中
+        effects: path.resolve(__dirname, '../src/effects/'),
+        // 將 basicComponents 放入 alias 中
+        basicComponents: path.resolve(__dirname, '../src/basicComponents/'),
+        // 將 constants 放入 alias 中
+        constants: path.resolve(__dirname, '../src/constants/'),
+
         ...(modules.webpackAliases || {}),
       },
       plugins: [
