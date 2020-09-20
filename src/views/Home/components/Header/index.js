@@ -1,6 +1,7 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
+import { useHistory } from 'react-router-dom'
 
 // Components
 import Icons from 'assets/icons'
@@ -15,10 +16,12 @@ const cx = classnames.bind(styles)
 export const propTypes = {}
 
 function Header(props) {
+  const history = useHistory()
+
   return (
     <div className={cx('home-header')}>
       <div className={cx('home-header-logo')}>
-        <Icons.NavLogo className={cx('home-header-logo__icon')} />
+        <Icons.NavLogo className={cx('home-header-logo__icon')} onClick={() => history.push('/')} />
         <p className={cx('home-header-logo__title')}>Live Life</p>
       </div>
       <div className={cx('home-header-nav')}>
