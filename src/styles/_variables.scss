@@ -3,11 +3,11 @@
 //
 
 // basic
-$color-primary-darkest                : rgb(043, 063, 087); // #2b3f57: dark-grey-blue
-// $color-primary-darker                 : rgb(039, 077, 134); // #274d86: dusk-blue
+
+
 // $color-primary-dark                   : rgb(028, 084, 168); // #1c54a8: sapphire
-$color-primary                           : rgb(0, 169, 157); // #00a99d
-// $color-primary-light                  : rgb(137, 187, 242); // #89bbf2: sky
+$color-primary                        : rgb(0, 169, 157);
+$color-primary-light                  : rgb(96, 201, 194); 
 // $color-primary-lighter                : rgb(212, 225, 244); // #d4e1f4: light-periwinkle
 // $color-primary-lightest               : rgb(233, 240, 249); // #e9f0f9: ice-blue
 
@@ -15,14 +15,14 @@ $color-primary                           : rgb(0, 169, 157); // #00a99d
 // $color-danger                         : rgb(213, 049, 049); // #d53131: reddish
 // $color-warn                           : rgb(239, 132, 060); // #ef843c: dusty-orange
 
-// gray
-$gray                                    : rgb(128, 128, 128); // #808080
+$black-light                          : rgb(043, 063, 087); 
+
 // $gray-darkest                         : rgb(097, 103, 111); // #61676f: slate-grey
 // $gray-darker                          : rgb(129, 136, 145); // #818891: steel
 // $gray-dark                            : rgb(170, 178, 188); // #aab2bc: light-grey-blue
-// $gray                                 : rgb(186, 196, 211); // #bac4d3: cloudy-blue
-// $gray-light                           : rgb(223, 225, 230); // #dfe1e6: light-gray
-// $gray-lighter                         : rgb(243, 245, 246); // #f3f5f6: ice-gray
+$gray                                 : rgb(128, 128, 128); 
+$gray-light                           : rgb(187, 187, 187);
+$gray-lighter                         : rgb(247, 247, 247);
 // $gray-lightest                        : rgb(241, 243, 249); // #f1f3f9: light-pale-grey
 // $gray-white                           : rgb(255, 255, 255); // #ffffff
 // $gray-bright                          : rgb(248, 249, 251); // #f8f9fb
