@@ -1,0 +1,34 @@
+// sizes
+$sizes: (
+  xs: (
+    width: 76px,
+  ),
+  sm: (
+    width: 100px,
+  ),
+);
+
+.filter-button {
+    border: solid 1px $color-primary-light;
+    margin: 8px;
+    text-align: center;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    @each $size, $properties in $sizes {
+        &[data-size='#{$size}'] {
+            width: map-get($properties, width);
+        }
+    }
+
+    &[data-is-active=true] {
+        color: white;
+        background-color: $color-primary-light;
+    }
+
+    &:hover {
+        background-color: $color-primary-light;
+        color: white;
+    }
+}

@@ -4,6 +4,7 @@ import classnames from 'classnames/bind'
 
 // Components
 import Map from './components/Map'
+import Result from './components/Result'
 
 // Style
 import styles from './style.module.scss'
@@ -17,6 +18,7 @@ function House(props) {
   return (
     <div className={cx('house')}>
       <Map />
+      <Result />
     </div>
   )
 }

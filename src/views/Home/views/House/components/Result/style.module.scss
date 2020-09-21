@@ -1,0 +1,43 @@
+.result {
+  width: 600px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px 20px 20px;
+  background-color: $gray-lighter;
+
+  &__amount {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.filter {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 8px;
+
+  &-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: solid 1px $gray-light ;
+
+    &__title {
+      width: 30%;
+      font-weight: bold;
+    }
+
+    &__button-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 70%;
+      box-sizing: border-box;
+      margin: 8px;
+    }
+  }
+}
