@@ -2,6 +2,7 @@ import React from 'react'
 // import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import { useForm, FormProvider } from 'react-hook-form'
+import { useMutation } from '@apollo/react-hooks'
 
 // Components
 import Row from './components/Row'
@@ -12,6 +13,7 @@ import HookForm from 'basicComponents/HookForm'
 import styles from './style.module.scss'
 
 // Variables / Functions
+import { ADD_HOUSE } from './gql'
 const cx = classnames.bind(styles)
 
 export const propTypes = {}
@@ -20,8 +22,11 @@ function Form(props) {
   const methods = useForm()
   const { handleSubmit } = methods
 
+  const [addHouse] = useMutation(ADD_HOUSE)
+
   const onSubmitClick = (data) => {
     console.log('onSubmitClick data', data)
+    addHouse({ variables: { title: 'testtt', price: 222 } })
   }
 
   return (
