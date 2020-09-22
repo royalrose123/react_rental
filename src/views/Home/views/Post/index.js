@@ -4,6 +4,7 @@ import classnames from 'classnames/bind'
 
 // Components
 import postPosterImage from 'assets/images/post_poster.jpeg'
+import Form from './components/Form'
 
 // Style
 import styles from './style.module.scss'
@@ -20,6 +21,7 @@ function Post(props) {
         <img className={cx('post__poster-image')} src={postPosterImage} />
         <div className={cx('post__poster-title')}>房屋刊登</div>
       </div>
+      <Form />
     </div>
   )
 }
