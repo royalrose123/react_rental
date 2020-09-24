@@ -12,8 +12,10 @@ import HookForm from 'basicComponents/HookForm'
 // Style
 import styles from './style.module.scss'
 
-// Variables / Functions
+// gql
 import { ADD_HOUSE } from './gql'
+
+// Variables / Functions
 const cx = classnames.bind(styles)
 
 export const propTypes = {}
@@ -26,7 +28,16 @@ function Form(props) {
 
   const onSubmitClick = (data) => {
     console.log('onSubmitClick data', data)
-    addHouse({ variables: { title: 'testtt', price: 222 } })
+    const newData = {
+      ...data,
+      price: Number(data.price),
+      floor: Number(data.floor),
+      totalFloor: Number(data.totalFloor),
+      livingroomAmount: Number(data.livingroomAmount),
+      roomAmount: Number(data.roomAmount),
+      restroomAmount: Number(data.restroomAmount),
+    }
+    addHouse({ variables: { ...newData } })
   }
 
   return (
@@ -67,7 +78,7 @@ function Form(props) {
             <HookForm.InputField name='roomAmount' />
           </FieldItem>
           <FieldItem title='客廳數量' width='80px'>
-            <HookForm.InputField name='livingAmount' />
+            <HookForm.InputField name='livingroomAmount' />
           </FieldItem>
           <FieldItem title='廁所數量' width='80px'>
             <HookForm.InputField name='restroomAmount' />
@@ -128,25 +139,25 @@ function Form(props) {
 
         <Row>
           <FieldItem title='押金' width='80px'>
-            <HookForm.InputField name='deposit' />
+            <HookForm.InputField name='require.deposit' />
           </FieldItem>
           <FieldItem title='最短租期' width='80px'>
-            <HookForm.InputField name='leastPeriod' />
+            <HookForm.InputField name='require.leastPeriod' />
           </FieldItem>
           <FieldItem title='開伙' width='80px'>
-            <HookForm.InputField name='cook' />
+            <HookForm.InputField name='require.cook' />
           </FieldItem>
         </Row>
 
         <Row>
           <FieldItem title='養寵物' width='80px'>
-            <HookForm.InputField name='pet' />
+            <HookForm.InputField name='require.pet' />
           </FieldItem>
           <FieldItem title='身份要求' width='80px'>
-            <HookForm.InputField name='identify' />
+            <HookForm.InputField name='require.identify' />
           </FieldItem>
           <FieldItem title='性別要求' width='80px'>
-            <HookForm.InputField name='gender' />
+            <HookForm.InputField name='require.gender' />
           </FieldItem>
         </Row>
 
