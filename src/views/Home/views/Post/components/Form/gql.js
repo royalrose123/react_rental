@@ -20,6 +20,8 @@ export const ADD_HOUSE = gql`
     $surrounding: String
     $title: String
     $totalFloor: Int
+    $address: String
+    $latLng: LatLngInput
   ) {
     addHouse(
       city: $city
@@ -40,6 +42,8 @@ export const ADD_HOUSE = gql`
       surrounding: $surrounding
       title: $title
       totalFloor: $totalFloor
+      address: $address
+      latLng: $latLng
     ) {
       city
       device {
@@ -87,6 +91,11 @@ export const ADD_HOUSE = gql`
       surrounding
       title
       totalFloor
+      address
+      latLng {
+        lat
+        lng
+      }
     }
   }
 `

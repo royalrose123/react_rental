@@ -19,25 +19,40 @@ import { ADD_HOUSE } from './gql'
 const cx = classnames.bind(styles)
 
 export const propTypes = {}
-
 function Form(props) {
   const methods = useForm()
   const { handleSubmit } = methods
 
   const [addHouse] = useMutation(ADD_HOUSE)
 
-  const onSubmitClick = (data) => {
+  const onSubmitClick = async (data) => {
     console.log('onSubmitClick data', data)
-    const newData = {
-      ...data,
-      price: Number(data.price),
-      floor: Number(data.floor),
-      totalFloor: Number(data.totalFloor),
-      livingroomAmount: Number(data.livingroomAmount),
-      roomAmount: Number(data.roomAmount),
-      restroomAmount: Number(data.restroomAmount),
-    }
-    addHouse({ variables: { ...newData } })
+    const address = data.city + data.distict + data.street
+
+    const geocoder = new window.google.maps.Geocoder()
+
+    geocoder.geocode({ address }, (results, status) => {
+      if (status === 'OK') {
+        const addressData = results[0]
+
+        const formattedAddress = addressData.formatted_address
+        const latLng = addressData.geometry.location
+
+        const newData = {
+          ...data,
+          address: formattedAddress,
+          latLng,
+          price: Number(data.price),
+          floor: Number(data.floor),
+          totalFloor: Number(data.totalFloor),
+          livingroomAmount: Number(data.livingroomAmount),
+          roomAmount: Number(data.roomAmount),
+          restroomAmount: Number(data.restroomAmount),
+        }
+
+        addHouse({ variables: { ...newData } })
+      }
+    })
   }
 
   return (
