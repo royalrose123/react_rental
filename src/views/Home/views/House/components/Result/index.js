@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import { find, clone } from 'lodash'
 
@@ -12,7 +12,9 @@ import styles from './style.module.scss'
 // Variables / Functions
 const cx = classnames.bind(styles)
 
-export const propTypes = {}
+export const propTypes = {
+  result: PropTypes.array,
+}
 
 const AMOUNT_FILTER_LIST = [
   { name: 1, isActive: false, value: 1 },
@@ -28,6 +30,8 @@ const TYPE_FILTER_LIST = [
 ]
 
 function Result(props) {
+  const { result } = props
+
   const [amountFilterList, setAmountFilterList] = useState(AMOUNT_FILTER_LIST)
   const [typeFilterList, setTypeFilterList] = useState(TYPE_FILTER_LIST)
 
@@ -80,7 +84,7 @@ function Result(props) {
         </div>
       </div>
       <div className={cx('result__amount')}>
-        <p>10筆結果</p>
+        <p>{`${result?.length}筆結果`}</p>
       </div>
     </div>
   )
