@@ -187,8 +187,8 @@ function Form(props) {
             <HookForm.TextareaField className={cx('form-textarea')} name='houseDetail' />
           </FieldItem>
         </Row>
-        <div>
-          <button type='submit' onClick={handleSubmit(onSubmitClick)}>
+        <div className={cx('form-submit')}>
+          <button className={cx('form-submit-button')} type='submit' onClick={handleSubmit(onSubmitClick)}>
             刊登
           </button>
         </div>

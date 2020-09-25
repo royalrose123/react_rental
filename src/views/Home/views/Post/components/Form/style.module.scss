@@ -17,4 +17,22 @@
     width: 640px;
     height: 300px;
   }
+
+  &-submit {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    &-button {
+      font-size: 18px;
+      background-color: $color-primary-lighter ;
+      width: 90px;
+      height: 32px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 8px;
+      color: white;
+      margin-bottom: 8px;
+    }
+  }
 }
