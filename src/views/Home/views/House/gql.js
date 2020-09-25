@@ -49,6 +49,11 @@ export const HOUSE_LIST = gql`
       surrounding
       title
       totalFloor
+      address
+      latLng {
+        lat
+        lng
+      }
     }
   }
 `
