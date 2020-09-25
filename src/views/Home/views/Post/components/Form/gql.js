@@ -15,7 +15,7 @@ export const ADD_HOUSE = gql`
     $restroomAmount: Int
     $roomAmount: Int
     $roomType: String
-    $size: String
+    $size: Int
     $street: String
     $surrounding: String
     $title: String

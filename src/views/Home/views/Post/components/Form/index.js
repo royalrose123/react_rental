@@ -3,6 +3,11 @@ import React from 'react'
 import classnames from 'classnames/bind'
 import { useForm, FormProvider } from 'react-hook-form'
 import { useMutation } from '@apollo/react-hooks'
+import { yupResolver } from '@hookform/resolvers'
+
+// Libs
+import { getInitialValues } from './methods/getInitialValues'
+import { schema } from './validation'
 
 // Components
 import Row from './components/Row'
@@ -20,7 +25,9 @@ const cx = classnames.bind(styles)
 
 export const propTypes = {}
 function Form(props) {
-  const methods = useForm()
+  const defaultValues = getInitialValues()
+
+  const methods = useForm({ defaultValues, resolver: yupResolver(schema) })
   const { handleSubmit } = methods
 
   const [addHouse] = useMutation(ADD_HOUSE)
@@ -42,6 +49,7 @@ function Form(props) {
           ...data,
           address: formattedAddress,
           latLng,
+          size: Number(data.size),
           price: Number(data.price),
           floor: Number(data.floor),
           totalFloor: Number(data.totalFloor),
@@ -66,7 +74,6 @@ function Form(props) {
             <p>Royal</p>
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='縣市' width='80px'>
             <HookForm.InputField name='city' />
@@ -78,7 +85,6 @@ function Form(props) {
             <HookForm.InputField name='street' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='價錢' width='80px'>
             <HookForm.InputField name='price' />
@@ -87,7 +93,6 @@ function Form(props) {
             <HookForm.InputField name='size' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='房間數量' width='80px'>
             <HookForm.InputField name='roomAmount' />
@@ -99,7 +104,6 @@ function Form(props) {
             <HookForm.InputField name='restroomAmount' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='樓層' width='80px'>
             <HookForm.InputField name='floor' />
@@ -108,7 +112,6 @@ function Form(props) {
             <HookForm.InputField name='totalFloor' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='類型' width='80px'>
             <HookForm.RadioField name='roomType' label='獨立套房' value='獨立套房' />
@@ -116,7 +119,6 @@ function Form(props) {
             <HookForm.RadioField name='roomType' label='整層住家' value='整層住家' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='設備' width='80px'>
             <div className={cx('form-checkbox-wrapper')}>
@@ -135,14 +137,12 @@ function Form(props) {
             </div>
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='其他' width='80px'>
             <HookForm.CheckboxField name='kitchen' label='廚房' group='others' />
             <HookForm.CheckboxField name='elevator' label='電梯' group='others' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='費用包含' width='80px'>
             <HookForm.CheckboxField name='associationFee' label='管理費' group='priceInclude' />
@@ -151,7 +151,6 @@ function Form(props) {
             <HookForm.CheckboxField name='networkBill' label='網路費' group='priceInclude' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='押金' width='80px'>
             <HookForm.InputField name='require.deposit' />
@@ -163,7 +162,6 @@ function Form(props) {
             <HookForm.InputField name='require.cook' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='養寵物' width='80px'>
             <HookForm.InputField name='require.pet' />
@@ -175,13 +173,11 @@ function Form(props) {
             <HookForm.InputField name='require.gender' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='生活周遭' width='80px'>
             <HookForm.TextareaField className={cx('form-textarea')} name='surrounding' />
           </FieldItem>
         </Row>
-
         <Row>
           <FieldItem title='房屋說明' width='80px'>
             <HookForm.TextareaField className={cx('form-textarea')} name='houseDetail' />
