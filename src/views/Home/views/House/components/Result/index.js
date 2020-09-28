@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import { find, clone } from 'lodash'
+import InputRange from 'basicComponents/InputRange'
 
 // Components
 import FilterButton from './components/FilterButton'
@@ -29,9 +30,14 @@ const TYPE_FILTER_LIST = [
   { name: '整層住家', isActive: false, value: '整層住家' },
 ]
 
+const MIN_VALUE = 0
+const MAX_VALUE = 100000
+const RANGE_STEP = 1000
+
 function Result(props) {
   const { result } = props
 
+  const [value, setValue] = useState({ min: MIN_VALUE, max: MAX_VALUE })
   const [amountFilterList, setAmountFilterList] = useState(AMOUNT_FILTER_LIST)
   const [typeFilterList, setTypeFilterList] = useState(TYPE_FILTER_LIST)
 
@@ -51,6 +57,22 @@ function Result(props) {
       <div className={cx('filter')}>
         <div className={cx('filter-row')}>
           <p className={cx('filter-row__title')}>月租金</p>
+          <div className={cx('filter-row__rent')}>
+            <InputRange
+              custumClassNames={{
+                slider: cx('filter-row__rent-slider'),
+                activeTrack: cx('filter-row__rent-track', 'active'),
+                valueLabel: cx('filter-row__rent-value'),
+                minLabel: cx('filter-row__rent-label'),
+                maxLabel: cx('filter-row__rent-label'),
+              }}
+              minValue={MIN_VALUE}
+              maxValue={MAX_VALUE}
+              value={value}
+              onChange={(value) => setValue(value)}
+              step={RANGE_STEP}
+            />
+          </div>
         </div>
         <div className={cx('filter-row')}>
           <p className={cx('filter-row__title')}>房間數量</p>
