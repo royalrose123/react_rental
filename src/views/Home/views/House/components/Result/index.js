@@ -6,6 +6,7 @@ import InputRange from 'basicComponents/InputRange'
 
 // Components
 import FilterButton from './components/FilterButton'
+import HouseCard from './components/HouseCard'
 
 // Style
 import styles from './style.module.scss'
@@ -107,6 +108,11 @@ function Result(props) {
       </div>
       <div className={cx('result__amount')}>
         <p>{`${result ? result?.length : 0}筆結果`}</p>
+      </div>
+      <div className={cx('result__list')}>
+        {result?.map((item, index) => (
+          <HouseCard key={index} {...item} />
+        ))}
       </div>
     </div>
   )
