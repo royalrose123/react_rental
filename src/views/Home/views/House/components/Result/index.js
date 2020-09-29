@@ -106,7 +106,7 @@ function Result(props) {
         </div>
       </div>
       <div className={cx('result__amount')}>
-        <p>{`${result?.length}筆結果`}</p>
+        <p>{`${result ? result?.length : 0}筆結果`}</p>
       </div>
     </div>
   )
