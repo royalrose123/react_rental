@@ -16,6 +16,7 @@ const cx = classnames.bind(styles)
 
 export const propTypes = {
   result: PropTypes.array,
+  setSeletedHouse: PropTypes.func,
 }
 
 const AMOUNT_FILTER_LIST = [
@@ -36,7 +37,7 @@ const MAX_VALUE = 100000
 const RANGE_STEP = 1000
 
 function Result(props) {
-  const { result } = props
+  const { result, setSeletedHouse } = props
 
   const [value, setValue] = useState({ min: MIN_VALUE, max: MAX_VALUE })
   const [amountFilterList, setAmountFilterList] = useState(AMOUNT_FILTER_LIST)
@@ -111,7 +112,7 @@ function Result(props) {
       </div>
       <div className={cx('result__list')}>
         {result?.map((item, index) => (
-          <HouseCard key={index} {...item} />
+          <HouseCard key={index} houseInfo={item} setSeletedHouse={setSeletedHouse} />
         ))}
       </div>
     </div>

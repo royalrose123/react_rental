@@ -1,0 +1,25 @@
+.detail {
+  width: 600px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  padding: 12px 20px 20px 20px;
+  background-color: $gray-lighter;
+
+  &-back {
+    width: 120px;
+    height: 36px;
+    border: 1px solid $color-primary-light;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #000000;
+      background-color: $color-primary-light;
+      color: #ffffff;
+    }
+  }
+}
