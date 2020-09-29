@@ -17,15 +17,14 @@ export const propTypes = {
     roomAmount: PropTypes.number,
     restroomAmount: PropTypes.number,
     roomType: PropTypes.string,
+    price: PropTypes.number,
   }),
   setSeletedHouse: PropTypes.func,
 }
 
-const PRICE = 36000
-
 function HouseCard(props) {
   const { houseInfo, setSeletedHouse } = props
-  const { roomAmount, restroomAmount, roomType } = houseInfo
+  const { roomAmount, restroomAmount, roomType, price } = houseInfo
 
   const [isLike, setIsLike] = useState(false)
 
@@ -46,7 +45,7 @@ function HouseCard(props) {
       <div className={cx('house-card__display')}>
         <img className={cx('house-card__display-image')} src={Default} />
         <div className={cx('house-card__display-row')}>
-          <p className={cx('house-card__display-row-price')}>{PRICE.toLocaleString()}</p>
+          <p className={cx('house-card__display-row-price')}>{price.toLocaleString()}</p>
           <Icons.Heart className={cx('house-card__display-row-heart')} data-is-like={isLike} onClick={onHeartClick} />
         </div>
       </div>
