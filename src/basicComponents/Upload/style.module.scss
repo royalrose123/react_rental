@@ -1,0 +1,19 @@
+.upload {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $gray-dark;
+  cursor: pointer;
+
+  &-icon {
+    width: 72px;
+    height: 72px;
+    fill: $gray-light;
+  }
+
+  &-input {
+    display: none;
+  }
+}
