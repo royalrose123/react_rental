@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import { useForm, FormProvider } from 'react-hook-form'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import { yupResolver } from '@hookform/resolvers'
 
 // Libs
@@ -18,7 +18,7 @@ import HookForm from 'basicComponents/HookForm'
 import styles from './style.module.scss'
 
 // gql
-import { ADD_HOUSE } from './gql'
+import { UPLOAD_FILE, ADD_HOUSE } from './gql'
 
 // Variables / Functions
 const cx = classnames.bind(styles)
@@ -28,9 +28,18 @@ function Form(props) {
   const defaultValues = getInitialValues()
 
   const methods = useForm({ defaultValues, resolver: yupResolver(schema) })
-  const { handleSubmit } = methods
+  const { handleSubmit, register, watch } = methods
+
+  const [uploadFile] = useMutation(UPLOAD_FILE)
+
+  useEffect(() => {
+    register('file')
+  }, [register])
 
   const [addHouse] = useMutation(ADD_HOUSE)
+
+  const currentFileList = watch('fileList')
+  console.log('currentFileList', currentFileList)
 
   const onSubmitClick = async (data) => {
     console.log('onSubmitClick data', data)
@@ -58,9 +67,19 @@ function Form(props) {
           restroomAmount: Number(data.restroomAmount),
         }
 
+        console.log('newData', newData)
+
         addHouse({ variables: { ...newData } })
       }
     })
+  }
+
+  const onFileSelect = (event) => {
+    const file = event.target.files[0]
+
+    uploadFile({ variables: { file } })
+
+    // setValue('file', event.target.files[0])
   }
 
   return (
@@ -153,26 +172,35 @@ function Form(props) {
         </Row>
         <Row>
           <FieldItem title='押金' width='80px'>
-            <HookForm.InputField name='require.deposit' />
+            <HookForm.InputField name='require.deposit' placeholder='一個月' />
           </FieldItem>
           <FieldItem title='最短租期' width='80px'>
-            <HookForm.InputField name='require.leastPeriod' />
+            <HookForm.InputField name='require.leastPeriod' placeholder='半年' />
           </FieldItem>
           <FieldItem title='開伙' width='80px'>
-            <HookForm.InputField name='require.cook' />
+            <HookForm.InputField name='require.cook' placeholder='不可以' />
           </FieldItem>
         </Row>
         <Row>
           <FieldItem title='養寵物' width='80px'>
-            <HookForm.InputField name='require.pet' />
+            <HookForm.InputField name='require.pet' placeholder='可以' />
           </FieldItem>
           <FieldItem title='身份要求' width='80px'>
-            <HookForm.InputField name='require.identify' />
+            <HookForm.InputField name='require.identify' placeholder='學生、上班族、都可' />
           </FieldItem>
           <FieldItem title='性別要求' width='80px'>
-            <HookForm.InputField name='require.gender' />
+            <HookForm.InputField name='require.gender' placeholder='限男生、限女生、都可' />
           </FieldItem>
         </Row>
+        <Row />
+        <FieldItem title='生活周遭' width='80px'>
+          <div className={cx('form-file')}>
+            <input className={cx('form-file-input')} type='file' accept='image/*' onChange={onFileSelect} />
+            {currentFileList.map((item, index) => (
+              <p key={index}>{item.file.name}</p>
+            ))}
+          </div>
+        </FieldItem>
         <Row>
           <FieldItem title='生活周遭' width='80px'>
             <HookForm.TextareaField className={cx('form-textarea')} name='surrounding' />

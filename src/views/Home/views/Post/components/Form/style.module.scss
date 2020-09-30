@@ -18,6 +18,13 @@
     height: 300px;
   }
 
+  &-file {
+    margin: 16px 0;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+  }
+
   &-submit {
     display: flex;
     flex-direction: row;

@@ -50,5 +50,6 @@ export const getInitialValues = () => {
       lat: 5,
       lng: 5,
     },
+    fileList: [],
   }
 }

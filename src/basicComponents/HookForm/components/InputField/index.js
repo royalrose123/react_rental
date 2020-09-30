@@ -22,11 +22,11 @@ export const propTypes = {
 export const defaultProps = {}
 
 function InputField(props) {
-  const { name, className } = props
+  const { name, className, ...restProps } = props
 
   const { register } = useFormContext()
 
-  return <input className={cx('input', className)} ref={register} name={name} />
+  return <input className={cx('input', className)} ref={register} name={name} {...restProps} />
 }
 
 InputField.propTypes = propTypes
