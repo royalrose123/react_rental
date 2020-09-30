@@ -2,13 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import ApolloClient from 'apollo-boost'
-import { ApolloProvider } from '@apollo/react-hooks'
 import { BrowserRouter } from 'react-router-dom'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+import { createUploadLink } from 'apollo-upload-client'
+
+// Styles
 import 'styles/main.scss'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5001/react-rental-db23c/us-central1/graphql',
+  // link: createUploadLink({ uri: 'http://localhost:5001/react-rental-db23c/us-central1/graphql' }),
+
+  link: createUploadLink({ uri: 'http://localhost:4000/' }),
+  cache: new InMemoryCache(),
 })
 
 ReactDOM.render(
