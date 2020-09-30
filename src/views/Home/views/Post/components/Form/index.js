@@ -4,6 +4,7 @@ import classnames from 'classnames/bind'
 import { useForm, FormProvider } from 'react-hook-form'
 import { useMutation } from '@apollo/client'
 import { yupResolver } from '@hookform/resolvers'
+import { cloneDeep } from 'lodash'
 
 // Libs
 import { getInitialValues } from './methods/getInitialValues'
@@ -13,12 +14,14 @@ import { schema } from './validation'
 import Row from './components/Row'
 import FieldItem from './components/FieldItem'
 import HookForm from 'basicComponents/HookForm'
+import Upload from 'basicComponents/Upload'
 
 // Style
 import styles from './style.module.scss'
 
 // gql
-import { UPLOAD_FILE, ADD_HOUSE } from './gql'
+import { ADD_HOUSE } from './gql'
+import Thumbnail from './components/Thumbnail'
 
 // Variables / Functions
 const cx = classnames.bind(styles)
@@ -28,18 +31,17 @@ function Form(props) {
   const defaultValues = getInitialValues()
 
   const methods = useForm({ defaultValues, resolver: yupResolver(schema) })
-  const { handleSubmit, register, watch } = methods
+  const { setValue, handleSubmit, register, watch } = methods
 
-  const [uploadFile] = useMutation(UPLOAD_FILE)
+  // const [uploadFile] = useMutation(UPLOAD_FILE)
 
   useEffect(() => {
-    register('file')
+    register('fileList')
   }, [register])
 
   const [addHouse] = useMutation(ADD_HOUSE)
 
   const currentFileList = watch('fileList')
-  console.log('currentFileList', currentFileList)
 
   const onSubmitClick = async (data) => {
     console.log('onSubmitClick data', data)
@@ -74,14 +76,29 @@ function Form(props) {
     })
   }
 
-  const onFileSelect = (event) => {
-    const file = event.target.files[0]
+  const onFileSelect = (fileList) => {
+    if (fileList.length + currentFileList.length > 5) {
+      return alert('最多只能上傳五張照片')
+    }
 
-    uploadFile({ variables: { file } })
+    const newFileList = fileList.map((file) => {
+      const fileUrl = window.URL.createObjectURL(file)
 
-    // setValue('file', event.target.files[0])
+      return { file, fileUrl, filename: file.name }
+    })
+
+    // uploadFile({ variables: { file } })
+
+    setValue('fileList', currentFileList.concat(newFileList))
   }
 
+  const handleCloseClick = (index) => {
+    const newFileList = cloneDeep(currentFileList)
+
+    newFileList.splice(index, 1)
+
+    setValue('fileList', newFileList)
+  }
   return (
     <FormProvider {...methods}>
       <HookForm className={cx('form')}>
@@ -193,12 +210,12 @@ function Form(props) {
           </FieldItem>
         </Row>
         <Row />
-        <FieldItem title='生活周遭' width='80px'>
+        <FieldItem title='照片' width='80px'>
           <div className={cx('form-file')}>
-            <input className={cx('form-file-input')} type='file' accept='image/*' onChange={onFileSelect} />
-            {currentFileList.map((item, index) => (
-              <p key={index}>{item.file.name}</p>
+            {currentFileList?.map((item, index) => (
+              <Thumbnail key={index} index={index} handleCloseClick={handleCloseClick} {...item} />
             ))}
+            {currentFileList.length < 5 && <Upload accept='image/*' handleFiles={onFileSelect} multiple />}
           </div>
         </FieldItem>
         <Row>
