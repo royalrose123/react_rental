@@ -4,7 +4,6 @@ import classnames from 'classnames/bind'
 
 // Components
 import Icons from 'assets/icons'
-import Default from 'assets/images/default.jpeg'
 import InfoItem from './components/InfoItem'
 import Label from './components/Label'
 
@@ -25,10 +24,11 @@ export const propTypes = {
   surrounding: PropTypes.string,
   device: PropTypes.object,
   others: PropTypes.object,
+  houseImg: PropTypes.array,
 }
 
 function Detail(props) {
-  const { setSeletedHouse, price, city, distict, address, houseDetail, surrounding, device, others } = props
+  const { setSeletedHouse, price, city, distict, address, houseDetail, surrounding, device, others, houseImg } = props
 
   return (
     <div className={cx('detail')}>
@@ -42,7 +42,7 @@ function Detail(props) {
         </div>
       </div>
       <div className={cx('detail__display')}>
-        <img className={cx('detail__display-image')} src={Default} />
+        <img className={cx('detail__display-image')} src={houseImg[0].url} />
       </div>
       <div className={cx('detail__info')}>
         <div className={cx('detail__info-main')}>

@@ -4,7 +4,6 @@ import classnames from 'classnames/bind'
 
 // Components
 import Icons from 'assets/icons'
-import Default from 'assets/images/default.jpeg'
 
 // Style
 import styles from './style.module.scss'
@@ -18,13 +17,22 @@ export const propTypes = {
     restroomAmount: PropTypes.number,
     roomType: PropTypes.string,
     price: PropTypes.number,
+    houseImg: PropTypes.array,
   }),
   setSeletedHouse: PropTypes.func,
 }
 
+const defaultProps = {
+  houseInfo: {
+    houseImg: [],
+  },
+}
+
 function HouseCard(props) {
   const { houseInfo, setSeletedHouse } = props
-  const { roomAmount, restroomAmount, roomType, price } = houseInfo
+  const { roomAmount, restroomAmount, roomType, price, houseImg = [] } = houseInfo
+
+  console.log('props', props)
 
   const [isLike, setIsLike] = useState(false)
 
@@ -43,7 +51,7 @@ function HouseCard(props) {
   return (
     <div className={cx('house-card')} onClick={onHouseCardClick}>
       <div className={cx('house-card__display')}>
-        <img className={cx('house-card__display-image')} src={Default} />
+        <img className={cx('house-card__display-image')} src={houseImg[0].url} />
         <div className={cx('house-card__display-row')}>
           <p className={cx('house-card__display-row-price')}>{price.toLocaleString()}</p>
           <Icons.Heart className={cx('house-card__display-row-heart')} data-is-like={isLike} onClick={onHeartClick} />
@@ -57,5 +65,6 @@ function HouseCard(props) {
 }
 
 HouseCard.propTypes = propTypes
+HouseCard.defaultProps = defaultProps
 
 export default HouseCard

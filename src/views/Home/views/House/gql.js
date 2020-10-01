@@ -54,6 +54,10 @@ export const HOUSE_LIST = gql`
         lat
         lng
       }
+      houseImg {
+        filename
+        url
+      }
     }
   }
 `
