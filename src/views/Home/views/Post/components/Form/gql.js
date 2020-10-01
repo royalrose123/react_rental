@@ -22,6 +22,7 @@ export const ADD_HOUSE = gql`
     $totalFloor: Int
     $address: String
     $latLng: LatLngInput
+    $fileList: [FileInput]
   ) {
     addHouse(
       city: $city
@@ -44,6 +45,7 @@ export const ADD_HOUSE = gql`
       totalFloor: $totalFloor
       address: $address
       latLng: $latLng
+      fileList: $fileList
     ) {
       city
       device {
@@ -96,12 +98,11 @@ export const ADD_HOUSE = gql`
         lat
         lng
       }
+      fileList {
+        file
+        fileUrl
+        filename
+      }
     }
-  }
-`
-
-export const UPLOAD_FILE = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file)
   }
 `

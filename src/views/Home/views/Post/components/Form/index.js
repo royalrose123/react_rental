@@ -15,13 +15,13 @@ import Row from './components/Row'
 import FieldItem from './components/FieldItem'
 import HookForm from 'basicComponents/HookForm'
 import Upload from 'basicComponents/Upload'
+import Thumbnail from './components/Thumbnail'
 
 // Style
 import styles from './style.module.scss'
 
 // gql
 import { ADD_HOUSE } from './gql'
-import Thumbnail from './components/Thumbnail'
 
 // Variables / Functions
 const cx = classnames.bind(styles)
@@ -32,8 +32,6 @@ function Form(props) {
 
   const methods = useForm({ defaultValues, resolver: yupResolver(schema) })
   const { setValue, handleSubmit, register, watch } = methods
-
-  // const [uploadFile] = useMutation(UPLOAD_FILE)
 
   useEffect(() => {
     register('fileList')
@@ -87,8 +85,6 @@ function Form(props) {
       return { file, fileUrl, filename: file.name }
     })
 
-    // uploadFile({ variables: { file } })
-
     setValue('fileList', currentFileList.concat(newFileList))
   }
 
@@ -99,6 +95,7 @@ function Form(props) {
 
     setValue('fileList', newFileList)
   }
+
   return (
     <FormProvider {...methods}>
       <HookForm className={cx('form')}>
