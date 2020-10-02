@@ -1,0 +1,13 @@
+.dot {
+  background-color: $color-white;
+  border: 1px black solid;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin: 4px;
+  cursor: pointer;
+
+  &[data-is-active='true']{
+    background-color: $color-black;
+  }
+}
