@@ -49,6 +49,7 @@
   &__body {
     min-height: 120px;
     padding: 8px 16px;
+    overflow-y: scroll;
   }
 
   &__footer {
