@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
+import { findIndex } from 'lodash'
 
 // Components
 import Icons from 'assets/icons'
@@ -33,6 +34,28 @@ function Detail(props) {
 
   const [currentImage, setCurrentImage] = useState(houseImg[0].url)
 
+  const imageLength = houseImg.length
+
+  const handlePreviousImage = () => {
+    const currentIndex = findIndex(houseImg, { url: currentImage })
+
+    if (currentIndex === 0) {
+      setCurrentImage(houseImg[imageLength - 1].url)
+    } else {
+      setCurrentImage(houseImg[currentIndex - 1].url)
+    }
+  }
+
+  const handleNextImage = () => {
+    const currentIndex = findIndex(houseImg, { url: currentImage })
+
+    if (currentIndex === imageLength - 1) {
+      setCurrentImage(houseImg[0].url)
+    } else {
+      setCurrentImage(houseImg[currentIndex + 1].url)
+    }
+  }
+
   return (
     <div className={cx('detail')}>
       <div className={cx('detail__button')}>
@@ -45,11 +68,17 @@ function Detail(props) {
         </div>
       </div>
       <div className={cx('detail__display')}>
+        <div className={cx('detail__display-select', 'previous')} onClick={handlePreviousImage}>
+          <Icons.Previous className={cx('detail__display-select-icon')} />
+        </div>
         <img className={cx('detail__display-image')} src={currentImage} />
         <div className={cx('detail__display-dot')}>
           {houseImg.map((item, index) => (
             <Dot key={index} isActive={item.url === currentImage} {...item} setCurrentImage={setCurrentImage} />
           ))}
+        </div>
+        <div className={cx('detail__display-select', 'next')} onClick={handleNextImage}>
+          <Icons.Next className={cx('detail__display-select-icon')} />
         </div>
       </div>
       <div className={cx('detail__info')}>

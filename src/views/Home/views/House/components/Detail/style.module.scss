@@ -65,6 +65,38 @@
   &__display {
     width: 560px;
     height: 366px;
+    position: relative;
+
+    &-select {
+      width: 48px;
+      height: calc(100% - 30px);
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, .3);
+      position: absolute;
+      top: 0px;
+      cursor: pointer;
+
+      &:hover{
+        opacity: 1;
+      }
+
+      &.previous {
+        left: 0px;
+      }
+
+      &.next {
+        right: 0px;
+      }
+
+      &-icon {
+        width: 30px;
+        height: 30px;
+        fill: $color-white;
+      }
+    }
 
     &-dot{
       width: 100%;
