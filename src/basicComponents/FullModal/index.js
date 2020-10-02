@@ -21,7 +21,7 @@ function FullModal(props) {
   const { children, ...restProps } = props
 
   return (
-    <Modal className={cx('full-modal')} isShown hasBack {...restProps}>
+    <Modal className={cx('full-modal')} bodyClassName={cx('full-modal-body')} isShown hasBack {...restProps}>
       {children}
     </Modal>
   )
