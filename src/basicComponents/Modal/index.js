@@ -4,6 +4,7 @@ import classnames from 'classnames/bind'
 
 // Components
 import Button from 'basicComponents/Button'
+import Icons from 'assets/icons'
 
 // Style
 import styles from './style.module.scss'
@@ -21,10 +22,12 @@ export const propTypes = {
   cancelLabel: PropTypes.string,
   onConfirm: PropTypes.func,
   onCancel: PropTypes.func,
+  onBack: PropTypes.func,
   hasConfirm: PropTypes.bool,
   hasCancel: PropTypes.bool,
   hasHeader: PropTypes.bool,
   hasFooter: PropTypes.bool,
+  hasBack: PropTypes.bool,
 }
 
 const defaultProps = {
@@ -33,10 +36,12 @@ const defaultProps = {
   cancelLabel: '取消',
   onConfirm: () => {},
   onCancel: () => {},
+  onBack: () => {},
   hasConfirm: true,
   hasCancel: true,
   hasHeader: true,
   hasFooter: true,
+  hasBack: false,
 }
 
 function Modal(props) {
@@ -50,10 +55,12 @@ function Modal(props) {
     cancelLabel,
     onConfirm,
     onCancel,
+    onBack,
     hasCancel,
     hasConfirm,
     hasHeader,
     hasFooter,
+    hasBack,
   } = props
 
   return (
@@ -62,7 +69,10 @@ function Modal(props) {
         <div className={cx('modal', className)}>
           {hasHeader && (
             <div className={cx('modal__header')}>
-              <p className={cx('modal__header-title')}>{title}</p>
+              {hasBack && <Icons.Previous className={cx('modal__header-back')} onClick={onBack} />}
+              <div className={cx('modal__header-title')}>
+                <p className={cx('modal__header-title-text')}>{title}</p>
+              </div>
             </div>
           )}
           <div className={cx('modal__body', bodyClassName)}>{children}</div>
