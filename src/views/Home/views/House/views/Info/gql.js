@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
-export const HOUSE_LIST = gql`
-  query {
-    houses {
+export const HOUSE_INFO = gql`
+  query house($postId: Int) {
+    house(postId: $postId) {
       postId
       city
       device {

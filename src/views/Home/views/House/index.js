@@ -33,7 +33,7 @@ function House(props) {
 
   console.log('match', match)
 
-  const result = data?.house
+  const result = data?.houses
 
   const [seletedHouse, setSeletedHouse] = useState({})
 
