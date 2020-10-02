@@ -13,20 +13,20 @@ const cx = classnames.bind(styles)
 export const propTypes = {
   index: PropTypes.number,
   fileUrl: PropTypes.string,
-  handleCloseClick: PropTypes.func,
+  handleRemoveClick: PropTypes.func,
 }
 
 function Thumbnail(props) {
-  const { index, fileUrl, handleCloseClick } = props
+  const { index, fileUrl, handleRemoveClick } = props
 
-  const onCloseClick = () => {
-    handleCloseClick(index)
+  const onRemoveClick = () => {
+    handleRemoveClick(index)
   }
 
   return (
     <div className={cx('thumbnail')}>
       <div className={cx('thumbnail-cover')}>
-        <div className={cx('thumbnail-cover-close')} onClick={onCloseClick}>
+        <div className={cx('thumbnail-cover-remove')} onClick={onRemoveClick}>
           X
         </div>
       </div>

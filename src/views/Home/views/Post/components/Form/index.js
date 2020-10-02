@@ -96,7 +96,7 @@ function Form(props) {
     setValue('fileList', currentFileList.concat(newFileList))
   }
 
-  const handleCloseClick = (index) => {
+  const handleRemoveClick = (index) => {
     const newFileList = cloneDeep(currentFileList)
 
     newFileList.splice(index, 1)
@@ -222,7 +222,7 @@ function Form(props) {
         <FieldItem title='照片' width='80px'>
           <div className={cx('form-file')}>
             {currentFileList?.map((item, index) => (
-              <Thumbnail key={index} index={index} handleCloseClick={handleCloseClick} {...item} />
+              <Thumbnail key={index} index={index} handleRemoveClick={handleRemoveClick} {...item} />
             ))}
             {currentFileList.length < 5 && <Upload accept='image/*' handleFiles={onFileSelect} multiple />}
           </div>
