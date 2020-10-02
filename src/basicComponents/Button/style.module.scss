@@ -1,0 +1,67 @@
+// types
+$types: (
+  default: (
+    border-color: $color-black,
+    background-color:  $color-white,
+    color:  $color-black,
+  ),
+  primary: (
+    border-color: $color-primary-light,
+    background-color:  $color-primary-lighter,
+    color: $color-white,
+  ),
+  danger: (
+    border-color: $color-danger,
+    background-color:  $color-danger,
+    color: $color-white,
+  ),
+);
+
+// sizes
+$sizes: (
+  xs: (
+    width: 80px,
+    height: 24px,
+    font-size: $font-size-xs,
+  ),
+  sm: (
+    width: 90px,
+    height: 30px,
+    font-size: $font-size-sm,
+  ),
+  md: (
+    width: 96px,
+    height: 34px,
+    font-size: $font-size-sm,
+  ),
+  lg: (
+    width: 102px,
+    height: 38px,
+    font-size: $font-size-md,
+  ),
+);
+
+.button {
+  margin: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+
+  @each $type, $styles in $types {
+    &[data-type='#{$type}'] {
+      border-color: map-get($styles, border-color);
+      background-color: map-get($styles, background-color);
+      color: map-get($styles, color);
+    }
+  }
+
+
+  @each $size, $styles in $sizes {
+    &[data-size='#{$size}'] {
+      width: map-get($styles, width);
+      height: map-get($styles, height);
+      font-size: map-get($styles, font-size);
+    }
+  }
+
+}

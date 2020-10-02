@@ -15,7 +15,13 @@ $color-primary-lighter                : rgb(26, 216, 211);
 // $color-danger                         : rgb(213, 049, 049); // #d53131: reddish
 // $color-warn                           : rgb(239, 132, 060); // #ef843c: dusty-orange
 
-$black-light                          : rgb(043, 063, 087); 
+
+$color-danger                         : rgb(213, 049, 049); 
+
+$color-white                                : rgb(255, 255, 255); 
+
+$color-black                                : rgb(0, 0, 0); 
+$color-black-light                          : rgb(043, 063, 087); 
 
 // $gray-darkest                         : rgb(097, 103, 111); // #61676f: slate-grey
 // $gray-darker                          : rgb(129, 136, 145); // #818891: steel
@@ -43,11 +49,11 @@ $transition-mode                      : cubic-bezier( .25, .8, .25, 1);
 $font-family                          : "system", "-apple-system", "PingFang-TC", "Segoe UI", "Microsoft JhengHei", "Roboto", "Oxygen", "Fira Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
 
 $font-size-xxl                        : 28px;
-$font-size-xl                         : 20px;
-$font-size-lg                         : 18px;
-$font-size-md                         : 16px;
-$font-size-sm                         : 14px;
-$font-size-xs                         : 12px;
+$font-size-xl                         : 22px;
+$font-size-lg                         : 20px;
+$font-size-md                         : 18px;
+$font-size-sm                         : 16px;
+$font-size-xs                         : 14px;
 
 
 // Responsive Width
