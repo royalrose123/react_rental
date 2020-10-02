@@ -1,0 +1,14 @@
+.thumbnail {
+  width: 118px;
+  height: 84px;
+
+  &-image{
+    width: 100%;
+    height: 100%;
+
+    &[data-is-active='true']{
+      outline: 2px solid $color-brown ;
+      outline-offset: -2px;
+    }
+  }
+}

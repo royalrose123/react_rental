@@ -17,3 +17,10 @@ export const OTHERS = {
   elevator: '電梯',
   kitchen: '廚房',
 }
+
+export const PRICE_INCLUDING = {
+  associationFee: '管理費',
+  cleaningFee: '清潔費',
+  networkBill: '網路費',
+  waterBill: '水費',
+}

@@ -31,8 +31,6 @@ function House(props) {
 
   const { data } = useQuery(HOUSE_LIST, { fetchPolicy: 'network-only' })
 
-  console.log('match', match)
-
   const result = data?.houses
 
   const [seletedHouse, setSeletedHouse] = useState({})

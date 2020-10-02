@@ -1,0 +1,14 @@
+.device {
+  width: 142px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 4px 0;
+
+  &-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+}
