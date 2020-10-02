@@ -40,7 +40,7 @@ export const getInitialValues = () => {
     },
     restroomAmount: 1,
     roomAmount: 2,
-    roomType: '套房',
+    roomType: '獨立套房',
     size: '12坪',
     street: '建安路',
     surrounding: '還在想',

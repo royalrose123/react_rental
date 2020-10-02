@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 // import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
+import { useHistory } from 'react-router-dom'
 import { useForm, FormProvider } from 'react-hook-form'
 import { useMutation } from '@apollo/client'
 import { yupResolver } from '@hookform/resolvers'
@@ -16,6 +17,8 @@ import FieldItem from './components/FieldItem'
 import HookForm from 'basicComponents/HookForm'
 import Upload from 'basicComponents/Upload'
 import Thumbnail from './components/Thumbnail'
+import Modal from 'basicComponents/Modal'
+import Button from 'basicComponents/Button'
 
 // Style
 import styles from './style.module.scss'
@@ -28,6 +31,9 @@ const cx = classnames.bind(styles)
 
 export const propTypes = {}
 function Form(props) {
+  const [isShownModal, setIsShownModal] = useState(false)
+
+  const history = useHistory()
   const defaultValues = getInitialValues()
 
   const methods = useForm({ defaultValues, resolver: yupResolver(schema) })
@@ -37,11 +43,15 @@ function Form(props) {
     register('fileList')
   }, [register])
 
-  const [addHouse] = useMutation(ADD_HOUSE)
+  const [addHouse, result] = useMutation(ADD_HOUSE)
+  const { called, loading } = result
+
+  const isSubmitSuccessfully = called && !loading
 
   const currentFileList = watch('fileList')
 
   const onSubmitClick = async (data) => {
+    setIsShownModal(true)
     console.log('onSubmitClick data', data)
     const address = data.city + data.distict + data.street
 
@@ -66,8 +76,6 @@ function Form(props) {
           roomAmount: Number(data.roomAmount),
           restroomAmount: Number(data.restroomAmount),
         }
-
-        console.log('newData', newData)
 
         addHouse({ variables: { ...newData } })
       }
@@ -94,6 +102,10 @@ function Form(props) {
     newFileList.splice(index, 1)
 
     setValue('fileList', newFileList)
+  }
+
+  const handleSubmitSuccess = () => {
+    history.push('/home/house')
   }
 
   return (
@@ -226,11 +238,24 @@ function Form(props) {
           </FieldItem>
         </Row>
         <div className={cx('form-submit')}>
-          <button className={cx('form-submit-button')} type='submit' onClick={handleSubmit(onSubmitClick)}>
+          <Button type='primary' htmlType='submit' onClick={handleSubmit(onSubmitClick)}>
             刊登
-          </button>
+          </Button>
         </div>
       </HookForm>
+      <Modal
+        className={cx('form-modal')}
+        bodyClassName={cx('form-modal-body')}
+        isShown={isShownModal}
+        hasHeader={false}
+        hasFooter={isSubmitSuccessfully}
+        hasCancel={false}
+        hasConfirm={isSubmitSuccessfully}
+        onConfirm={handleSubmitSuccess}
+      >
+        {isSubmitSuccessfully && <p>上傳成功！</p>}
+        {!isSubmitSuccessfully && <p>上傳中，請稍候...</p>}
+      </Modal>
     </FormProvider>
   )
 }

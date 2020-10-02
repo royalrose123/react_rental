@@ -4,6 +4,7 @@
   width: 80%;
   height: auto;
   margin: 0 auto;
+  padding-bottom: 8px;
 
   &-checkbox-wrapper {
     display: flex;
@@ -29,17 +30,15 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+  }
 
-    &-button {
-      font-size: 18px;
-      background-color: $color-primary-lighter ;
-      width: 90px;
-      height: 32px;
-      text-align: center;
-      cursor: pointer;
-      border-radius: 8px;
-      color: white;
-      margin-bottom: 8px;
+  &-modal {
+    width: 400px;
+    height: auto;
+
+    &-body {
+      display: flex;
+      padding: 28px 20px;
     }
   }
 }
