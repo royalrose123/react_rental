@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-// import PropTypes from 'prop-types'
+import { Switch, Route, withRouter } from 'react-router-dom'
+import loadable from '@loadable/component'
+import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import { useQuery } from '@apollo/react-hooks'
 import { isEmpty } from 'lodash'
@@ -18,10 +20,18 @@ import { HOUSE_LIST } from './gql'
 // Variables / Functions
 const cx = classnames.bind(styles)
 
-export const propTypes = {}
+const Info = loadable(() => import('./views/Info'))
+
+export const propTypes = {
+  match: PropTypes.object,
+}
 
 function House(props) {
+  const { match } = props
+
   const { data } = useQuery(HOUSE_LIST, { fetchPolicy: 'network-only' })
+
+  console.log('match', match)
 
   const result = data?.house
 
@@ -32,10 +42,13 @@ function House(props) {
       <Map />
       {isEmpty(seletedHouse) && <Result result={result} setSeletedHouse={setSeletedHouse} />}
       {!isEmpty(seletedHouse) && <Detail setSeletedHouse={setSeletedHouse} {...seletedHouse} />}
+      <Switch>
+        <Route strict sensitive path={`${match.url}/:postId/info`} component={Info} />
+      </Switch>
     </div>
   )
 }
 
 House.propTypes = propTypes
 
-export default House
+export default withRouter(House)

@@ -32,7 +32,7 @@ function Home(props) {
       <Header />
       <Main>
         <Switch>
-          <Route strict sensitive path={`${match.url}/house`} component={House} />
+          <Route strict sensitive path={[`${match.url}/house`, `${match.url}/house/:postId/info`]} component={House} />
           <Route strict sensitive path={`${match.url}/post`} component={Post} />
           <Route strict sensitive path={`${match.url}/member`} component={Member} />
           <Redirect push from='/' to={`${match.url}/house`} />

@@ -3,6 +3,7 @@ import { gql } from '@apollo/client'
 export const HOUSE_LIST = gql`
   query {
     house {
+      postId
       city
       device {
         airConditioner

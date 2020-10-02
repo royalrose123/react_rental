@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import { findIndex } from 'lodash'
+import { useHistory } from 'react-router-dom'
 
 // Components
 import Icons from 'assets/icons'
@@ -14,10 +15,11 @@ import styles from './style.module.scss'
 
 // Variables / Functions
 import { DEVICE, OTHERS } from 'constants/house'
+
 const cx = classnames.bind(styles)
 
 export const propTypes = {
-  setSeletedHouse: PropTypes.func,
+  postId: PropTypes.number,
   price: PropTypes.number,
   city: PropTypes.string,
   distict: PropTypes.string,
@@ -27,10 +29,13 @@ export const propTypes = {
   device: PropTypes.object,
   others: PropTypes.object,
   houseImg: PropTypes.array,
+  setSeletedHouse: PropTypes.func,
 }
 
 function Detail(props) {
-  const { setSeletedHouse, price, city, distict, address, houseDetail, surrounding, device, others, houseImg } = props
+  const { postId, price, city, distict, address, houseDetail, surrounding, device, others, houseImg, setSeletedHouse } = props
+
+  const history = useHistory()
 
   const [currentImage, setCurrentImage] = useState(houseImg[0].url)
 
@@ -123,6 +128,9 @@ function Detail(props) {
           </div>
         </InfoItem>
       </div>
+      <p className={cx('detail__more')} onClick={() => history.push(`/home/house/${postId}/info`)}>
+        更多詳細資訊
+      </p>
     </div>
   )
 }
