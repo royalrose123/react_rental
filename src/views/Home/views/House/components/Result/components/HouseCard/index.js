@@ -32,8 +32,6 @@ function HouseCard(props) {
   const { houseInfo, setSeletedHouse } = props
   const { roomAmount, restroomAmount, roomType, price, houseImg = [] } = houseInfo
 
-  console.log('props', props)
-
   const [isLike, setIsLike] = useState(false)
 
   const onHouseCardClick = (event) => {
