@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 
@@ -6,6 +6,7 @@ import classnames from 'classnames/bind'
 import Icons from 'assets/icons'
 import InfoItem from './components/InfoItem'
 import Label from './components/Label'
+import Dot from './components/Dot'
 
 // Style
 import styles from './style.module.scss'
@@ -30,6 +31,8 @@ export const propTypes = {
 function Detail(props) {
   const { setSeletedHouse, price, city, distict, address, houseDetail, surrounding, device, others, houseImg } = props
 
+  const [currentImage, setCurrentImage] = useState(houseImg[0].url)
+
   return (
     <div className={cx('detail')}>
       <div className={cx('detail__button')}>
@@ -42,7 +45,12 @@ function Detail(props) {
         </div>
       </div>
       <div className={cx('detail__display')}>
-        <img className={cx('detail__display-image')} src={houseImg[0].url} />
+        <img className={cx('detail__display-image')} src={currentImage} />
+        <div className={cx('detail__display-dot')}>
+          {houseImg.map((item, index) => (
+            <Dot key={index} isActive={item.url === currentImage} {...item} setCurrentImage={setCurrentImage} />
+          ))}
+        </div>
       </div>
       <div className={cx('detail__info')}>
         <div className={cx('detail__info-main')}>
