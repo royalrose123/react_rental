@@ -19,7 +19,7 @@ export const propTypes = {
   onClick: PropTypes.func,
   htmlType: PropTypes.string,
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
-  type: PropTypes.oneOf(['default', 'primary', 'danger']),
+  type: PropTypes.oneOf(['default', 'primary', 'danger', 'brown']),
 }
 
 // DefaultProps
