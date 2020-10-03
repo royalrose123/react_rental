@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 // import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
+import { useMutation } from '@apollo/react-hooks'
 
 // Components
 import memberPosterImage from 'assets/images/member_poster.jpg'
@@ -11,6 +13,9 @@ import Post from './components/Post'
 
 // Style
 import styles from './style.module.scss'
+
+// gql
+import { LOG_OUT } from './gql'
 
 // Variables / Functions
 const cx = classnames.bind(styles)
@@ -24,10 +29,18 @@ const TAB = {
 }
 
 function Member(props) {
+  const history = useHistory()
+
   const [currentTab, setCurrentTab] = useState(TAB.INFO)
 
-  console.log('currentTab', currentTab)
+  const [logout] = useMutation(LOG_OUT, { errorPolicy: 'all' })
 
+  const handleLouOut = () => {
+    logout().then((result) => {
+      window.localStorage.clear()
+      history.push('/')
+    })
+  }
   return (
     <div className={cx('member')}>
       <div className={cx('member__poster')}>
@@ -46,7 +59,7 @@ function Member(props) {
           <Button className={cx('member__main-tab-button')} type='primary' size='md' onClick={() => setCurrentTab(TAB.POST)}>
             我的刊登
           </Button>
-          <Button className={cx('member__main-tab-button')} type='primary' size='md'>
+          <Button className={cx('member__main-tab-button')} type='primary' size='md' onClick={handleLouOut}>
             登出
           </Button>
         </div>
