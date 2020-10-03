@@ -18,6 +18,8 @@ export const propTypes = {}
 function Header(props) {
   const history = useHistory()
 
+  const token = window.localStorage.getItem('token')
+
   return (
     <div className={cx('home-header')}>
       <div className={cx('home-header-logo')}>
@@ -27,8 +29,8 @@ function Header(props) {
       <div className={cx('home-header-nav')}>
         <NavItem name='找房' path='house' />
         <NavItem name='刊登' path='post' />
-        <NavItem name='會員' path='member' />
-        <NavItem name='登入' path='house/login' />
+        {token && <NavItem name='會員' path='member' />}
+        {!token && <NavItem name='登入' path='house/login' />}
       </div>
     </div>
   )
