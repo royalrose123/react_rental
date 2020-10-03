@@ -20,6 +20,7 @@ export const propTypes = {
   htmlType: PropTypes.string,
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
   type: PropTypes.oneOf(['default', 'primary', 'danger', 'brown']),
+  isBlock: PropTypes.bool,
 }
 
 // DefaultProps
@@ -27,13 +28,14 @@ export const defaultProps = {
   htmlType: 'button',
   size: 'sm',
   type: 'default',
+  isBlock: false,
 }
 
 function Button(props) {
-  const { children, className, onClick, htmlType, size, type } = props
+  const { children, className, onClick, htmlType, size, type, isBlock } = props
 
   return (
-    <button className={cx('button', className)} onClick={onClick} type={htmlType} data-size={size} data-type={type}>
+    <button className={cx('button', className)} onClick={onClick} type={htmlType} data-size={size} data-type={type} data-is-block={isBlock}>
       {children}
     </button>
   )
