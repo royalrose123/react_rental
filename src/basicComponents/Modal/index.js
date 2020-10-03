@@ -30,6 +30,7 @@ export const propTypes = {
   hasFooter: PropTypes.bool,
   hasBack: PropTypes.bool,
   shouldCloseOnExternalClick: PropTypes.bool,
+  confirmType: PropTypes.string,
 }
 
 const defaultProps = {
@@ -46,6 +47,7 @@ const defaultProps = {
   hasFooter: true,
   hasBack: false,
   shouldCloseOnExternalClick: false,
+  confirmType: 'primary',
 }
 
 function Modal(props) {
@@ -66,6 +68,7 @@ function Modal(props) {
     hasFooter,
     hasBack,
     shouldCloseOnExternalClick,
+    confirmType,
   } = props
 
   const modalRef = useRef(null)
@@ -101,7 +104,7 @@ function Modal(props) {
                 </Button>
               )}
               {hasConfirm && (
-                <Button className={cx('modal__footer-button')} onClick={onConfirm} type='primary'>
+                <Button className={cx('modal__footer-button')} onClick={onConfirm} type={confirmType}>
                   {confirmLabel}
                 </Button>
               )}
