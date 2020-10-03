@@ -160,14 +160,14 @@ function Info(props) {
             </div>
           </div>
 
-          <div className={cx('info-left__session')}>
-            <p className={cx('info-left__session-title')}>生活交通</p>
-            <p className={cx('info-left__session-content')}>{surrounding}</p>
+          <div className={cx('info-left__section')}>
+            <p className={cx('info-left__section-title')}>生活交通</p>
+            <p className={cx('info-left__section-content')}>{surrounding}</p>
           </div>
 
-          <div className={cx('info-left__session')}>
-            <p className={cx('info-left__session-title')}>屋況說明</p>
-            <p className={cx('info-left__session-content')}>{houseDetail}</p>
+          <div className={cx('info-left__section')}>
+            <p className={cx('info-left__section-title')}>屋況說明</p>
+            <p className={cx('info-left__section-content')}>{houseDetail}</p>
           </div>
 
           <div className={cx('info-left__ask')}>
