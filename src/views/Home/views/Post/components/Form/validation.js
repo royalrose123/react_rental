@@ -19,7 +19,7 @@ export const schema = Yup.object().shape({
   restroomAmount: Yup.number().required('This field is mandatory'),
   roomAmount: Yup.number().required('This field is mandatory'),
   roomType: Yup.string().required('This field is mandatory'),
-  size: Yup.string().required('This field is mandatory'),
+  size: Yup.number().required('This field is mandatory'),
   street: Yup.string().required('This field is mandatory'),
   surrounding: Yup.string().required('This field is mandatory'),
   title: Yup.string().required('This field is mandatory'),

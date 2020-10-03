@@ -5,10 +5,15 @@ import classnames from 'classnames/bind'
 import { useQuery } from '@apollo/react-hooks'
 import { isEmpty, findIndex } from 'lodash'
 
+// Libs
+import { setPhoneSeparate } from 'utils/setPhoneSeparate'
+
 // Components
 import Icons from 'assets/icons'
 import Thumbnail from './components/Thumbnail'
 import Device from './components/Device'
+import Avatar from 'assets/images/avatar.png'
+import Button from 'basicComponents/Button'
 
 // Style
 import styles from './style.module.scss'
@@ -34,10 +39,22 @@ function Info(props) {
 
   const { data = { house: {} } } = useQuery(HOUSE_INFO, { variables: { postId: Number(postId) } })
   const { house } = data
-  const { houseImg, require = {}, device = {}, priceInclude = {}, price, size, floor, totalFloor, roomAmount, restroomAmount, roomType } = house
+  const {
+    houseImg,
+    require = {},
+    device = {},
+    priceInclude = {},
+    price,
+    size,
+    floor,
+    totalFloor,
+    roomAmount,
+    restroomAmount,
+    roomType,
+    surrounding,
+    houseDetail,
+  } = house
   const { gender, deposit, leastPeriod, identify, cook, pet } = require
-
-  console.log('Info house 00000', house)
 
   const [currentImage, setCurrentImage] = useState('')
 
@@ -87,6 +104,7 @@ function Info(props) {
               <Icons.Next className={cx('info-left__display-select-icon')} />
             </div>
           </div>
+
           <div className={cx('info-left__require')}>
             <div className={cx('info-left__require-row')}>
               <div className={cx('info-left__require-row-item')}>
@@ -141,8 +159,28 @@ function Info(props) {
                 })}
             </div>
           </div>
-          <div className={cx('info-left__require')}>
-            <p className={cx('info-left__require')}>13600</p>
+
+          <div className={cx('info-left__session')}>
+            <p className={cx('info-left__session-title')}>生活交通</p>
+            <p className={cx('info-left__session-content')}>{surrounding}</p>
+          </div>
+
+          <div className={cx('info-left__session')}>
+            <p className={cx('info-left__session-title')}>屋況說明</p>
+            <p className={cx('info-left__session-content')}>{houseDetail}</p>
+          </div>
+
+          <div className={cx('info-left__ask')}>
+            <p className={cx('info-left__ask-text')}>房屋問答</p>
+            <p className={cx('info-left__ask-text')}>目前沒有問答</p>
+          </div>
+
+          <div className={cx('info-left__question')}>
+            <p className={cx('info-left__question-title')}>我要提問</p>
+            <textarea className={cx('info-left__question-textarea')} />
+            <Button className={cx('info-left__question-submit')} type='brown'>
+              確認送出
+            </Button>
           </div>
         </div>
 
@@ -170,7 +208,14 @@ function Info(props) {
             <div className={cx('info-right__info-row')}>{`類型：${roomType}`}</div>
           </div>
           <div className={cx('info-right__landlord')}>
-            <p className={cx('info-right__landlord')}>陳先生</p>
+            <div className={cx('info-right__landlord-avatar')}>
+              <img className={cx('info-right__landlord-avatar-icon')} src={Avatar} />
+              <p className={cx('info-right__landlord-avatar-name')}>陳先生</p>
+            </div>
+            <div className={cx('info-right__landlord-phone')}>
+              <Icons.Phone className={cx('info-right__landlord-phone-icon')} />
+              <p className={cx('info-right__landlord-phone-number')}>{setPhoneSeparate('0912345678')}</p>
+            </div>
           </div>
         </div>
       </div>
