@@ -79,12 +79,12 @@ function Modal(props) {
           {hasFooter && (
             <div className={cx('modal__footer')}>
               {hasCancel && (
-                <Button onClick={onCancel} type='default'>
+                <Button className={cx('modal__footer-button')} onClick={onCancel} type='default'>
                   {cancelLabel}
                 </Button>
               )}
               {hasConfirm && (
-                <Button onClick={onConfirm} type='primary'>
+                <Button className={cx('modal__footer-button')} onClick={onConfirm} type='primary'>
                   {confirmLabel}
                 </Button>
               )}
