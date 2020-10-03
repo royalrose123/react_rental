@@ -3,9 +3,7 @@ import { isEmpty } from 'lodash'
 
 function useMapEffect() {
   const [position, setPosition] = useState({})
-  const [map, setMap] = useState(null)
-
-  console.log('map 11111', map)
+  const [, setMap] = useState(null)
 
   useEffect(() => {
     if (isEmpty(position)) {
