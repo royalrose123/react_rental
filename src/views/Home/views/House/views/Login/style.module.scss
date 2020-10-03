@@ -1,0 +1,62 @@
+.login-modal {
+  width: 350px;
+  height: 430px;
+
+  &-body {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-item {
+      width: 264px;
+      height: 36px;
+      padding: 4px 8px;
+      margin: -1px;
+    }
+  }
+
+  &__forget {
+    text-align: right;
+    margin: 16px 24px;
+    color: $gray;
+    cursor: pointer;
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8px 32px;
+  }
+
+  &__gmail {
+    width: 100%;
+    padding: 0px 32px;
+    margin: 8px 0px;
+
+    &-button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

@@ -28,6 +28,7 @@ function Header(props) {
         <NavItem name='找房' path='house' />
         <NavItem name='刊登' path='post' />
         <NavItem name='會員' path='member' />
+        <NavItem name='登入' path='house/login' />
       </div>
     </div>
   )

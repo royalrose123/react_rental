@@ -21,6 +21,7 @@ import { HOUSE_LIST } from './gql'
 const cx = classnames.bind(styles)
 
 const Info = loadable(() => import('./views/Info'))
+const Login = loadable(() => import('./views/Login'))
 
 export const propTypes = {
   match: PropTypes.object,
@@ -42,6 +43,7 @@ function House(props) {
       {!isEmpty(seletedHouse) && <Detail setSeletedHouse={setSeletedHouse} {...seletedHouse} />}
       <Switch>
         <Route strict sensitive path={`${match.url}/:postId/info`} component={Info} />
+        <Route strict sensitive path={`${match.url}/login`} component={Login} />
       </Switch>
     </div>
   )
