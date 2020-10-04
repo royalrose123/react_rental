@@ -49,7 +49,7 @@ function HouseCard(props) {
   return (
     <div className={cx('house-card')} onClick={onHouseCardClick}>
       <div className={cx('house-card__display')}>
-        <img className={cx('house-card__display-image')} src={houseImg[0].url} />
+        <img className={cx('house-card__display-image')} src={houseImg[0].fileUrl} />
         <div className={cx('house-card__display-row')}>
           <p className={cx('house-card__display-row-price')}>{price.toLocaleString()}</p>
           <Icons.Heart className={cx('house-card__display-row-heart')} data-is-like={isLike} onClick={onHeartClick} />

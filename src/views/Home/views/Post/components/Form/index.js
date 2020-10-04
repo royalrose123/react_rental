@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import { useHistory } from 'react-router-dom'
 import { useForm, FormProvider } from 'react-hook-form'
@@ -8,7 +8,6 @@ import { yupResolver } from '@hookform/resolvers'
 import { cloneDeep } from 'lodash'
 
 // Libs
-import { getInitialValues } from './methods/getInitialValues'
 import { schema } from './validation'
 
 // Components
@@ -29,12 +28,14 @@ import { ADD_HOUSE } from './gql'
 // Variables / Functions
 const cx = classnames.bind(styles)
 
-export const propTypes = {}
+export const propTypes = {
+  defaultValues: PropTypes.object,
+}
 function Form(props) {
+  const { defaultValues } = props
   const [isShownModal, setIsShownModal] = useState(false)
 
   const history = useHistory()
-  const defaultValues = getInitialValues()
 
   const methods = useForm({ defaultValues, resolver: yupResolver(schema) })
   const { setValue, handleSubmit, register, watch } = methods
@@ -228,7 +229,7 @@ function Form(props) {
             {currentFileList?.map((item, index) => (
               <Thumbnail key={index} index={index} handleRemoveClick={handleRemoveClick} {...item} />
             ))}
-            {currentFileList.length < 5 && <Upload accept='image/*' handleFiles={onFileSelect} multiple name='fileList' />}
+            {currentFileList?.length < 5 && <Upload accept='image/*' handleFiles={onFileSelect} multiple name='fileList' />}
           </div>
         </FieldItem>
         <Row>

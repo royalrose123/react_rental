@@ -28,7 +28,7 @@ function Thumbnail(props) {
   return (
     <div className={cx('thumbnail')} onClick={() => history.push(`/home/house/${postId}/info`)}>
       <div className={cx('thumbnail__display')}>
-        <img className={cx('thumbnail__display-image')} src={houseImg[0].url} />
+        <img className={cx('thumbnail__display-image')} src={houseImg[0].fileUrl} />
         <p className={cx('thumbnail__display-price')}>{price.toLocaleString()}</p>
       </div>
       <div className={cx('thumbnail__info')}>

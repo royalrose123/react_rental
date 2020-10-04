@@ -11,17 +11,17 @@ import styles from './style.module.scss'
 const cx = classnames.bind(styles)
 
 export const propTypes = {
-  url: PropTypes.string,
+  fileUrl: PropTypes.string,
   currentImage: PropTypes.string,
   setCurrentImage: PropTypes.func,
 }
 
 function Thumbnail(props) {
-  const { url, currentImage, setCurrentImage } = props
+  const { fileUrl, currentImage, setCurrentImage } = props
 
   return (
-    <div className={cx('thumbnail')} onClick={() => setCurrentImage(url)}>
-      <img className={cx('thumbnail-image')} src={url} data-is-active={currentImage === url} />
+    <div className={cx('thumbnail')} onClick={() => setCurrentImage(fileUrl)}>
+      <img className={cx('thumbnail-image')} src={fileUrl} data-is-active={currentImage === fileUrl} />
     </div>
   )
 }

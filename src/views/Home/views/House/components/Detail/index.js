@@ -37,27 +37,27 @@ function Detail(props) {
 
   const history = useHistory()
 
-  const [currentImage, setCurrentImage] = useState(houseImg[0].url)
+  const [currentImage, setCurrentImage] = useState(houseImg[0].fileUrl)
 
   const imageLength = houseImg.length
 
   const handlePreviousImage = () => {
-    const currentIndex = findIndex(houseImg, { url: currentImage })
+    const currentIndex = findIndex(houseImg, { fileUrl: currentImage })
 
     if (currentIndex === 0) {
-      setCurrentImage(houseImg[imageLength - 1].url)
+      setCurrentImage(houseImg[imageLength - 1].fileUrl)
     } else {
-      setCurrentImage(houseImg[currentIndex - 1].url)
+      setCurrentImage(houseImg[currentIndex - 1].fileUrl)
     }
   }
 
   const handleNextImage = () => {
-    const currentIndex = findIndex(houseImg, { url: currentImage })
+    const currentIndex = findIndex(houseImg, { fileUrl: currentImage })
 
     if (currentIndex === imageLength - 1) {
-      setCurrentImage(houseImg[0].url)
+      setCurrentImage(houseImg[0].fileUrl)
     } else {
-      setCurrentImage(houseImg[currentIndex + 1].url)
+      setCurrentImage(houseImg[currentIndex + 1].fileUrl)
     }
   }
 
@@ -79,7 +79,7 @@ function Detail(props) {
         <img className={cx('detail__display-image')} src={currentImage} />
         <div className={cx('detail__display-dot')}>
           {houseImg.map((item, index) => (
-            <Dot key={index} isActive={item.url === currentImage} {...item} setCurrentImage={setCurrentImage} />
+            <Dot key={index} isActive={item.fileUrl === currentImage} {...item} setCurrentImage={setCurrentImage} />
           ))}
         </div>
         <div className={cx('detail__display-select', 'next')} onClick={handleNextImage}>

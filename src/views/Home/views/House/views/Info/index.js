@@ -67,27 +67,27 @@ function Info(props) {
 
   useEffect(() => {
     if (!isEmpty(houseImg)) {
-      setCurrentImage(houseImg[0].url)
+      setCurrentImage(houseImg[0].fileUrl)
     }
   }, [houseImg])
 
   const handlePreviousImage = () => {
-    const currentIndex = findIndex(houseImg, { url: currentImage })
+    const currentIndex = findIndex(houseImg, { fileUrl: currentImage })
 
     if (currentIndex === 0) {
-      setCurrentImage(houseImg[imageLength - 1].url)
+      setCurrentImage(houseImg[imageLength - 1].fileUrl)
     } else {
-      setCurrentImage(houseImg[currentIndex - 1].url)
+      setCurrentImage(houseImg[currentIndex - 1].fileUrl)
     }
   }
 
   const handleNextImage = () => {
-    const currentIndex = findIndex(houseImg, { url: currentImage })
+    const currentIndex = findIndex(houseImg, { fileUrl: currentImage })
 
     if (currentIndex === imageLength - 1) {
-      setCurrentImage(houseImg[0].url)
+      setCurrentImage(houseImg[0].fileUrl)
     } else {
-      setCurrentImage(houseImg[currentIndex + 1].url)
+      setCurrentImage(houseImg[currentIndex + 1].fileUrl)
     }
   }
 

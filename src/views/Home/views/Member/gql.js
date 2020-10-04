@@ -10,7 +10,7 @@ export const USER = gql`
         restroomAmount
         distinct
         houseImg {
-          url
+          fileUrl
         }
       }
       gender

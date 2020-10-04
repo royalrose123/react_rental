@@ -12,15 +12,15 @@ const cx = classnames.bind(styles)
 
 export const propTypes = {
   isActive: PropTypes.bool,
-  url: PropTypes.string,
+  fileUrl: PropTypes.string,
   setCurrentImage: PropTypes.func,
 }
 
 function Dot(props) {
-  const { isActive, url, setCurrentImage } = props
+  const { isActive, fileUrl, setCurrentImage } = props
 
   const onDotClick = () => {
-    setCurrentImage(url)
+    setCurrentImage(fileUrl)
   }
 
   return <div className={cx('dot')} data-is-active={isActive} onClick={onDotClick} />

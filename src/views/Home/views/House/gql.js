@@ -57,7 +57,7 @@ export const HOUSE_LIST = gql`
       }
       houseImg {
         filename
-        url
+        fileUrl
       }
     }
   }
