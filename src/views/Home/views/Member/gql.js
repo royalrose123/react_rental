@@ -3,6 +3,7 @@ import { gql } from '@apollo/client'
 export const USER = gql`
   query user {
     user {
+      gender
       email
       userId
       displayName

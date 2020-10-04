@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 // import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
-import { useMutation } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 
 // Components
 import memberPosterImage from 'assets/images/member_poster.jpg'
@@ -15,7 +15,7 @@ import Post from './components/Post'
 import styles from './style.module.scss'
 
 // gql
-import { LOG_OUT } from './gql'
+import { LOG_OUT, USER } from './gql'
 
 // Variables / Functions
 const cx = classnames.bind(styles)
@@ -34,6 +34,11 @@ function Member(props) {
   const [currentTab, setCurrentTab] = useState(TAB.INFO)
 
   const [logout] = useMutation(LOG_OUT, { errorPolicy: 'all' })
+  const { data: userData = {}, called, loading } = useQuery(USER, { fetchPolicy: 'network-only' })
+
+  const isLoaded = called && !loading
+
+  const { user } = userData
 
   const handleLouOut = () => {
     logout().then((result) => {
@@ -64,9 +69,13 @@ function Member(props) {
           </Button>
         </div>
         <div className={cx('member__main-content')}>
-          {currentTab === TAB.INFO && <Info />}
-          {currentTab === TAB.FAVORITE && <Favorite />}
-          {currentTab === TAB.POST && <Post />}
+          {isLoaded && (
+            <>
+              {currentTab === TAB.INFO && <Info {...user} />}
+              {currentTab === TAB.FAVORITE && <Favorite />}
+              {currentTab === TAB.POST && <Post />}
+            </>
+          )}
         </div>
       </div>
     </div>

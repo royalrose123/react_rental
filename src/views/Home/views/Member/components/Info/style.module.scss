@@ -16,6 +16,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: 16px;
 
     &-title {
@@ -23,6 +24,11 @@
     }
 
     &-content {
+    }
+
+    &-input {
+      width: 280px;
+      height: 32px;
     }
 
     &.button {
