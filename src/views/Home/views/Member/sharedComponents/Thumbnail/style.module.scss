@@ -1,0 +1,42 @@
+.thumbnail {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  height: 180px;
+  border: 1px solid $gray;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.9s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__display {
+    width: 100%;
+    height: 120px;
+    position: relative;
+
+    &-image {
+      width: 100%;
+      height: 100%;
+    }
+
+    &-price {
+      color: $color-white;
+      position: absolute;
+      left: 8px;
+      bottom: 0px;
+      font-size: 24px;
+      text-shadow: 1px 1px 10px $color-black;
+    }
+  }
+
+  &__info {
+    font-size: 8px;
+
+    &-text {
+      margin: 8px;
+    }
+  }
+}

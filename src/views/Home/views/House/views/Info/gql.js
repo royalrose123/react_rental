@@ -3,6 +3,11 @@ import { gql } from '@apollo/client'
 export const HOUSE_INFO = gql`
   query house($postId: Int) {
     house(postId: $postId) {
+      postUser {
+        gender
+        displayName
+        phoneNumber
+      }
       postId
       city
       device {

@@ -38,7 +38,8 @@ function Member(props) {
 
   const isLoaded = called && !loading
 
-  const { user } = userData
+  const { user = {} } = userData
+  const { userPost, ...userInfo } = user
 
   const handleLouOut = () => {
     logout().then((result) => {
@@ -71,9 +72,9 @@ function Member(props) {
         <div className={cx('member__main-content')}>
           {isLoaded && (
             <>
-              {currentTab === TAB.INFO && <Info {...user} />}
+              {currentTab === TAB.INFO && <Info {...userInfo} />}
               {currentTab === TAB.FAVORITE && <Favorite />}
-              {currentTab === TAB.POST && <Post />}
+              {currentTab === TAB.POST && <Post userPost={userPost} />}
             </>
           )}
         </div>
