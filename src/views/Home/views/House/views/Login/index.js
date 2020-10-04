@@ -85,7 +85,15 @@ function Login(props) {
       } else {
         const { data } = result
         const { login } = data
-        const { token, ...userInfo } = login
+        const { token, displayName, email, phoneNumber, photoURL, userId } = login
+
+        const userInfo = {
+          displayName,
+          email,
+          phoneNumber,
+          photoURL,
+          userId,
+        }
 
         window.localStorage.setItem('token', token)
         window.localStorage.setItem('userInfo', JSON.stringify(userInfo))

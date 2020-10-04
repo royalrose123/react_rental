@@ -1,13 +1,13 @@
 export const getInitialValues = (house) => {
   const userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
 
-  delete userInfo.__typename
-
   return {
+    ...house,
     postUser: {
       ...userInfo,
     },
-    ...house,
-    fileList: house.houseImg,
+    fileList: house.houseImg?.map((item) => {
+      return { filename: item.filename, fileUrl: item.fileUrl, isExisted: true }
+    }),
   }
 }

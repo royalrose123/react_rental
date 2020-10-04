@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import { useHistory } from 'react-router-dom'
 import { useForm, FormProvider } from 'react-hook-form'
-import { useMutation } from '@apollo/client'
+
 import { yupResolver } from '@hookform/resolvers'
 import { cloneDeep } from 'lodash'
 
@@ -22,17 +22,17 @@ import Button from 'basicComponents/Button'
 // Style
 import styles from './style.module.scss'
 
-// gql
-import { ADD_HOUSE } from './gql'
-
 // Variables / Functions
 const cx = classnames.bind(styles)
 
 export const propTypes = {
   defaultValues: PropTypes.object,
+  onSubmitClick: PropTypes.func,
+  mutationHouse: PropTypes.func,
+  isSubmitSuccessfully: PropTypes.bool,
 }
 function Form(props) {
-  const { defaultValues } = props
+  const { defaultValues, onSubmitClick, mutationHouse, isSubmitSuccessfully } = props
   const [isShownModal, setIsShownModal] = useState(false)
 
   const history = useHistory()
@@ -43,47 +43,11 @@ function Form(props) {
   useEffect(() => {
     register('fileList')
     register('postUser')
+    register('postId')
   }, [register])
-
-  const [addHouse, result] = useMutation(ADD_HOUSE)
-  const { called, loading } = result
-
-  const isSubmitSuccessfully = called && !loading
 
   const currentFileList = watch('fileList')
   const userName = watch('postUser.displayName')
-
-  const onSubmitClick = async (data) => {
-    setIsShownModal(true)
-    console.log('onSubmitClick data', data)
-    const address = data.city + data.distinct + data.street
-
-    const geocoder = new window.google.maps.Geocoder()
-
-    geocoder.geocode({ address }, (results, status) => {
-      if (status === 'OK') {
-        const addressData = results[0]
-
-        const formattedAddress = addressData.formatted_address
-        const latLng = addressData.geometry.location
-
-        const newData = {
-          ...data,
-          address: formattedAddress,
-          latLng,
-          size: Number(data.size),
-          price: Number(data.price),
-          floor: Number(data.floor),
-          totalFloor: Number(data.totalFloor),
-          livingroomAmount: Number(data.livingroomAmount),
-          roomAmount: Number(data.roomAmount),
-          restroomAmount: Number(data.restroomAmount),
-        }
-
-        addHouse({ variables: { ...newData } })
-      }
-    })
-  }
 
   const onFileSelect = (fileList) => {
     if (fileList.length + currentFileList.length > 5) {
@@ -243,7 +207,7 @@ function Form(props) {
           </FieldItem>
         </Row>
         <div className={cx('form-submit')}>
-          <Button type='primary' htmlType='submit' onClick={handleSubmit(onSubmitClick)}>
+          <Button type='primary' htmlType='submit' onClick={handleSubmit((data) => onSubmitClick(data, setIsShownModal, mutationHouse))}>
             刊登
           </Button>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 import { isEmpty } from 'lodash'
@@ -20,6 +21,8 @@ export const propTypes = {
 function Post(props) {
   const { userPost } = props
 
+  const history = useHistory()
+
   return (
     <div className={cx('post')}>
       <div className={cx('post-list')}>
@@ -29,7 +32,7 @@ function Post(props) {
               <div key={index} className={cx('post-list__thumbnail')}>
                 <Thumbnail {...item} />
                 <div className={cx('post-list__thumbnail-button')}>
-                  <Button type='primary' size='xs'>
+                  <Button type='primary' size='xs' onClick={() => history.push(`/home/post/${item.postId}/edit`)}>
                     修改
                   </Button>
                   <Button type='primary' size='xs'>
