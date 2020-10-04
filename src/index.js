@@ -4,15 +4,28 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter } from 'react-router-dom'
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 import { createUploadLink } from 'apollo-upload-client'
 
 // Styles
 import 'styles/main.scss'
 
-const client = new ApolloClient({
-  // link: createUploadLink({ uri: 'http://localhost:5001/react-rental-db23c/us-central1/graphql' }),
+// const UploadLink = createUploadLink({ uri: 'http://localhost:5001/react-rental-db23c/us-central1/graphql' })
+const UploadLink = createUploadLink({ uri: 'http://localhost:4000/' })
 
-  link: createUploadLink({ uri: 'http://localhost:4000/' }),
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('token')
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  }
+})
+
+const client = new ApolloClient({
+  link: authLink.concat(UploadLink),
   cache: new InMemoryCache(),
 })
 
