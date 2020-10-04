@@ -41,6 +41,7 @@ function Form(props) {
 
   useEffect(() => {
     register('fileList')
+    register('postUser')
   }, [register])
 
   const [addHouse, result] = useMutation(ADD_HOUSE)
@@ -49,6 +50,7 @@ function Form(props) {
   const isSubmitSuccessfully = called && !loading
 
   const currentFileList = watch('fileList')
+  const userName = watch('postUser.displayName')
 
   const onSubmitClick = async (data) => {
     setIsShownModal(true)
@@ -116,7 +118,7 @@ function Form(props) {
             <HookForm.InputField name='title' />
           </FieldItem>
           <FieldItem title='屋主' width='80px'>
-            <p>Royal</p>
+            <p>{userName}</p>
           </FieldItem>
         </Row>
         <Row>

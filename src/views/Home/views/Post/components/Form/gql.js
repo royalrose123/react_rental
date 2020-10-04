@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 
 export const ADD_HOUSE = gql`
   mutation addHouse(
+    $postUser: UserInput
     $city: String
     $device: DeviceInput
     $distict: String
@@ -25,6 +26,7 @@ export const ADD_HOUSE = gql`
     $fileList: [FileInput]
   ) {
     addHouse(
+      postUser: $postUser
       city: $city
       device: $device
       distict: $distict
@@ -47,6 +49,14 @@ export const ADD_HOUSE = gql`
       latLng: $latLng
       fileList: $fileList
     ) {
+      postUser {
+        displayName
+        email
+        gender
+        phoneNumber
+        photoURL
+        userId
+      }
       city
       device {
         airConditioner

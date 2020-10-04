@@ -3,12 +3,21 @@ import { gql } from '@apollo/client'
 export const USER = gql`
   query user {
     user {
+      userPost {
+        postId
+        price
+        roomAmount
+        restroomAmount
+        distict
+        houseImg {
+          url
+        }
+      }
       gender
       email
       userId
       displayName
       photoURL
-      emailVerified
       phoneNumber
     }
   }

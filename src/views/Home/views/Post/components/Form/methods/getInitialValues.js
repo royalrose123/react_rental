@@ -1,5 +1,12 @@
 export const getInitialValues = () => {
+  const userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+
+  delete userInfo.__typename
+
   return {
+    postUser: {
+      ...userInfo,
+    },
     city: '新北市',
     device: {
       airConditioner: false,

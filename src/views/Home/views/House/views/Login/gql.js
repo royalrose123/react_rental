@@ -17,7 +17,6 @@ export const LOGIN = gql`
       userId
       displayName
       photoURL
-      emailVerified
       phoneNumber
     }
   }
