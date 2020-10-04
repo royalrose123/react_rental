@@ -2,7 +2,7 @@ import * as Yup from 'yup'
 
 export const schema = Yup.object().shape({
   city: Yup.string().required('此欄位為必填'),
-  distict: Yup.string().required('此欄位為必填'),
+  distinct: Yup.string().required('此欄位為必填'),
   floor: Yup.number().typeError('此欄位為數字').positive('此欄位不接受負數').required('此欄位為必填'),
   houseDetail: Yup.string().required('此欄位為必填'),
   livingroomAmount: Yup.number().typeError('此欄位為數字').positive('此欄位不接受負數').required('此欄位為必填'),

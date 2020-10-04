@@ -22,7 +22,7 @@ export const propTypes = {
   postId: PropTypes.number,
   price: PropTypes.number,
   city: PropTypes.string,
-  distict: PropTypes.string,
+  distinct: PropTypes.string,
   address: PropTypes.string,
   houseDetail: PropTypes.string,
   surrounding: PropTypes.string,
@@ -33,7 +33,7 @@ export const propTypes = {
 }
 
 function Detail(props) {
-  const { postId, price, city, distict, address, houseDetail, surrounding, device, others, houseImg, setSeletedHouse } = props
+  const { postId, price, city, distinct, address, houseDetail, surrounding, device, others, houseImg, setSeletedHouse } = props
 
   const history = useHistory()
 
@@ -91,7 +91,7 @@ function Detail(props) {
           <p className={cx('detail__info-main__price')}>{price.toLocaleString()}</p>
           <div className={cx('detail__info-main__separate')} />
           <div className={cx('detail__info-main__address')}>
-            <p className={cx('detail__info-main__address-distict')}>{`${city}${distict}`}</p>
+            <p className={cx('detail__info-main__address-distinct')}>{`${city}${distinct}`}</p>
             <p className={cx('detail__info-main__address-street')}>{address}</p>
           </div>
         </div>

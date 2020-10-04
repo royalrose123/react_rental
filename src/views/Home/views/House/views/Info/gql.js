@@ -19,7 +19,7 @@ export const HOUSE_INFO = gql`
         television
         wardrobe
       }
-      distict
+      distinct
       floor
       houseDetail
       livingroomAmount

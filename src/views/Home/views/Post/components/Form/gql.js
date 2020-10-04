@@ -5,7 +5,7 @@ export const ADD_HOUSE = gql`
     $postUser: UserInput
     $city: String
     $device: DeviceInput
-    $distict: String
+    $distinct: String
     $floor: Int
     $houseDetail: String
     $livingroomAmount: Int
@@ -29,7 +29,7 @@ export const ADD_HOUSE = gql`
       postUser: $postUser
       city: $city
       device: $device
-      distict: $distict
+      distinct: $distinct
       floor: $floor
       houseDetail: $houseDetail
       livingroomAmount: $livingroomAmount
@@ -72,7 +72,7 @@ export const ADD_HOUSE = gql`
         television
         wardrobe
       }
-      distict
+      distinct
       floor
       houseDetail
       livingroomAmount

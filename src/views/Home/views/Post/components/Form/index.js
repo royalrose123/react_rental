@@ -55,7 +55,7 @@ function Form(props) {
   const onSubmitClick = async (data) => {
     setIsShownModal(true)
     console.log('onSubmitClick data', data)
-    const address = data.city + data.distict + data.street
+    const address = data.city + data.distinct + data.street
 
     const geocoder = new window.google.maps.Geocoder()
 
@@ -126,7 +126,7 @@ function Form(props) {
             <HookForm.InputField name='city' />
           </FieldItem>
           <FieldItem title='行政區' width='80px'>
-            <HookForm.InputField name='distict' />
+            <HookForm.InputField name='distinct' />
           </FieldItem>
           <FieldItem title='街道' width='80px'>
             <HookForm.InputField name='street' />

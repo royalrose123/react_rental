@@ -22,7 +22,7 @@ export const getInitialValues = () => {
       television: false,
       wardrobe: false,
     },
-    distict: '三峽區',
+    distinct: '三峽區',
     floor: 3,
     houseDetail: '無',
     livingroomAmount: 2,

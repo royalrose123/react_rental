@@ -8,7 +8,7 @@ export const USER = gql`
         price
         roomAmount
         restroomAmount
-        distict
+        distinct
         houseImg {
           url
         }

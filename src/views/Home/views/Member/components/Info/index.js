@@ -45,7 +45,6 @@ const MODE = {
 
 function Info(props) {
   const defaultValues = getInitialValues(props)
-
   const methods = useForm({ defaultValues, resolver: yupResolver(schema), shouldUnregister: false })
   const { register, handleSubmit, clearErrors, setValue, control } = methods
 
