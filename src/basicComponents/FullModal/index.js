@@ -12,7 +12,7 @@ import styles from './style.module.scss'
 const cx = classnames.bind(styles)
 
 export const propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.any,
 }
 
 const defaultProps = {}
