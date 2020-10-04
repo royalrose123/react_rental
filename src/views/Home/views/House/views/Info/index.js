@@ -37,7 +37,7 @@ function Info(props) {
   const { params } = match
   const { postId } = params
 
-  const { data = { house: {} }, called, loading } = useQuery(HOUSE_INFO, { variables: { postId: Number(postId) } })
+  const { data = { house: {} }, called, loading } = useQuery(HOUSE_INFO, { variables: { postId: Number(postId) }, fetchPolicy: 'network-only' })
 
   const isLoaded = called && !loading
 
