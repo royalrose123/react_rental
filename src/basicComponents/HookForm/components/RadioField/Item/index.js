@@ -19,25 +19,30 @@ export const propTypes = {
   name: PropTypes.string,
   group: PropTypes.string,
   label: PropTypes.string,
+  value: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
-function CheckboxField(props) {
-  const { name, group, label } = props
+const defaultProps = {
+  disabled: false,
+}
+
+function Item(props) {
+  const { name, group, label, value, disabled } = props
 
   const { register } = useFormContext()
 
   const fieldName = group ? `${group}.${name}` : name
 
   return (
-    <div>
-      <label className={cx('checkbox-wrapper')}>
-        <input className={cx('checkbox')} type='checkbox' ref={register} name={fieldName} />
-        {label}
-      </label>
-    </div>
+    <label className={cx('radio-wrapper')}>
+      <input className={cx('radio')} type='radio' ref={register} name={fieldName} value={value} disabled={disabled} />
+      {label}
+    </label>
   )
 }
 
-CheckboxField.propTypes = propTypes
+Item.propTypes = propTypes
+Item.defaultProps = defaultProps
 
-export default CheckboxField
+export default Item

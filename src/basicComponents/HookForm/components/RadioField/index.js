@@ -1,10 +1,11 @@
 // Libs
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useFormContext } from 'react-hook-form'
 import classnames from 'classnames/bind'
 
 // Components
+import Item from './Item'
+import ErrorMessage from '../ErrorMessage'
 
 // Lib MISC
 
@@ -16,27 +17,26 @@ const cx = classnames.bind(styles)
 
 // PropTypes
 export const propTypes = {
+  children: PropTypes.array,
   name: PropTypes.string,
-  group: PropTypes.string,
-  label: PropTypes.string,
-  value: PropTypes.string,
 }
 
-function CheckboxField(props) {
-  const { name, group, label, value } = props
+const defaultProps = {}
 
-  const { register } = useFormContext()
-
-  const fieldName = group ? `${group}.${name}` : name
+function RadioField(props) {
+  const { children, name } = props
 
   return (
-    <label className={cx('radio-wrapper')}>
-      <input className={cx('radio')} type='radio' ref={register} name={fieldName} value={value} />
-      {label}
-    </label>
+    <div>
+      <div className={cx('radio')}>{children}</div>
+      <ErrorMessage name={name} />
+    </div>
   )
 }
 
-CheckboxField.propTypes = propTypes
+RadioField.propTypes = propTypes
+RadioField.defaultProps = defaultProps
 
-export default CheckboxField
+RadioField.Item = Item
+
+export default RadioField

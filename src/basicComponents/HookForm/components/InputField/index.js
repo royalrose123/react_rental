@@ -1,10 +1,11 @@
 // Libs
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useFormContext } from 'react-hook-form'
 import classnames from 'classnames/bind'
+import { useFormContext } from 'react-hook-form'
 
 // Components
+import ErrorMessage from '../ErrorMessage'
 
 // Style
 import styles from './style.module.scss'
@@ -26,7 +27,12 @@ function InputField(props) {
 
   const { register } = useFormContext()
 
-  return <input className={cx('input', className)} ref={register} name={name} {...restProps} />
+  return (
+    <div>
+      <input className={cx('input', className)} ref={register} name={name} {...restProps} />
+      <ErrorMessage name={name} />
+    </div>
+  )
 }
 
 InputField.propTypes = propTypes

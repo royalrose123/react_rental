@@ -5,6 +5,7 @@ import { useFormContext } from 'react-hook-form'
 import classnames from 'classnames/bind'
 
 // Components
+import ErrorMessage from '../ErrorMessage'
 
 // Style
 import styles from './style.module.scss'
@@ -28,8 +29,11 @@ function TextareaField(props) {
   const { register } = useFormContext()
 
   return (
-    <div className={cx('textarea-wrapper')}>
-      <textarea className={cx('textarea', className)} ref={register} name={name} value={value} />
+    <div>
+      <div className={cx('textarea-wrapper')}>
+        <textarea className={cx('textarea', className)} ref={register} name={name} value={value} />
+      </div>
+      <ErrorMessage name={name} />
     </div>
   )
 }

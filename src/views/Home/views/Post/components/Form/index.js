@@ -159,9 +159,11 @@ function Form(props) {
         </Row>
         <Row>
           <FieldItem title='類型' width='80px'>
-            <HookForm.RadioField name='roomType' label='獨立套房' value='獨立套房' />
-            <HookForm.RadioField name='roomType' label='雅房' value='雅房' />
-            <HookForm.RadioField name='roomType' label='整層住家' value='整層住家' />
+            <HookForm.RadioField name='roomType'>
+              <HookForm.RadioField.Item name='roomType' label='獨立套房' value='獨立套房' />
+              <HookForm.RadioField.Item name='roomType' label='雅房' value='雅房' />
+              <HookForm.RadioField.Item name='roomType' label='整層住家' value='整層住家' />
+            </HookForm.RadioField>
           </FieldItem>
         </Row>
         <Row>
@@ -224,7 +226,7 @@ function Form(props) {
             {currentFileList?.map((item, index) => (
               <Thumbnail key={index} index={index} handleRemoveClick={handleRemoveClick} {...item} />
             ))}
-            {currentFileList.length < 5 && <Upload accept='image/*' handleFiles={onFileSelect} multiple />}
+            {currentFileList.length < 5 && <Upload accept='image/*' handleFiles={onFileSelect} multiple name='fileList' />}
           </div>
         </FieldItem>
         <Row>
