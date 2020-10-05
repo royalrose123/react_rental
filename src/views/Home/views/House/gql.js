@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
 export const HOUSE_LIST = gql`
-  query {
-    houses {
+  query($price: PriceInput, $roomAmount: [RoomAmountInput], $roomType: [RoomTypeInput]) {
+    houses(price: $price, roomAmount: $roomAmount, roomType: $roomType) {
       postId
       city
       device {

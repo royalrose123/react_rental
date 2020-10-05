@@ -27,19 +27,51 @@ export const propTypes = {
   match: PropTypes.object,
 }
 
+const MIN_VALUE = 0
+const MAX_VALUE = 100000
+
+const AMOUNT_FILTER_LIST = [
+  { name: 1, isActive: false, value: 1 },
+  { name: 2, isActive: false, value: 2 },
+  { name: 3, isActive: false, value: 3 },
+  { name: 4, isActive: false, value: 4 },
+]
+
+const TYPE_FILTER_LIST = [
+  { name: '雅房', isActive: false, value: '雅房' },
+  { name: '獨立套房', isActive: false, value: '獨立套房' },
+  { name: '整層住家', isActive: false, value: '整層住家' },
+]
+
+const initialSearchForm = {
+  price: { min: MIN_VALUE, max: MAX_VALUE },
+  roomAmount: AMOUNT_FILTER_LIST,
+  roomType: TYPE_FILTER_LIST,
+}
+
 function House(props) {
   const { match } = props
 
-  const { data } = useQuery(HOUSE_LIST, { fetchPolicy: 'network-only' })
+  const [seletedHouse, setSeletedHouse] = useState({})
+  const [searchForm, setSearchForm] = useState(initialSearchForm)
+
+  const { data } = useQuery(HOUSE_LIST, { variables: { ...searchForm }, fetchPolicy: 'network-only' })
 
   const result = data?.houses
-
-  const [seletedHouse, setSeletedHouse] = useState({})
 
   return (
     <div className={cx('house')}>
       <Map />
-      {isEmpty(seletedHouse) && <Result result={result} setSeletedHouse={setSeletedHouse} />}
+      {isEmpty(seletedHouse) && (
+        <Result
+          result={result}
+          setSeletedHouse={setSeletedHouse}
+          searchForm={searchForm}
+          setSearchForm={setSearchForm}
+          minValue={MIN_VALUE}
+          maxValue={MAX_VALUE}
+        />
+      )}
       {!isEmpty(seletedHouse) && <Detail setSeletedHouse={setSeletedHouse} {...seletedHouse} />}
       <Switch>
         <Route strict sensitive path={`${match.url}/:postId/info`} component={Info} />
