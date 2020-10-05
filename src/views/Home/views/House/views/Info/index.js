@@ -92,7 +92,7 @@ function Info(props) {
   }
 
   return (
-    <FullModal hasFooter={false} title='房屋資訊' onBack={() => history.push('home/house')}>
+    <FullModal hasFooter={false} title='房屋資訊' onBack={() => history.push('/home/house')}>
       {isLoaded && (
         <div className={cx('info')}>
           <div className={cx('info-left')}>
