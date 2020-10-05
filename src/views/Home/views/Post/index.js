@@ -33,11 +33,13 @@ function Post(props) {
         <img className={cx('post__poster-image')} src={postPosterImage} />
         <div className={cx('post__poster-title')}>房屋刊登</div>
       </div>
-      <Switch>
-        <Route strict sensitive path={`${match.url}/create`} component={Create} />
-        <Route strict sensitive path={`${match.url}/:postId/edit`} component={Edit} />
-        <Redirect push from='/' to={`${match.url}/create`} />
-      </Switch>
+      {token && (
+        <Switch>
+          <Route strict sensitive path={`${match.url}/create`} component={Create} />
+          <Route strict sensitive path={`${match.url}/:postId/edit`} component={Edit} />
+          <Redirect push from='/' to={`${match.url}/create`} />
+        </Switch>
+      )}
       <Modal className={cx('post-modal')} isShown={!token} title='Remind' hasCancel={false} onConfirm={() => history.push('/home/house')}>
         請先登入或註冊會員
       </Modal>

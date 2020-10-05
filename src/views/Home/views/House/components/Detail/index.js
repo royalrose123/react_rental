@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
-import { findIndex } from 'lodash'
-import { useHistory } from 'react-router-dom'
+import { findIndex, isEmpty } from 'lodash'
 
 // Components
 import Icons from 'assets/icons'
@@ -40,6 +40,13 @@ function Detail(props) {
   const [currentImage, setCurrentImage] = useState(houseImg[0].fileUrl)
 
   const imageLength = houseImg.length
+
+  useEffect(() => {
+    // 點地圖 marker 時當點選不同的 house 就要 reset currentImage
+    if (isEmpty(postId)) {
+      setCurrentImage(houseImg[0].fileUrl)
+    }
+  }, [houseImg, postId])
 
   const handlePreviousImage = () => {
     const currentIndex = findIndex(houseImg, { fileUrl: currentImage })

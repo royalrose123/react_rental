@@ -43,10 +43,18 @@ const TYPE_FILTER_LIST = [
   { name: '整層住家', isActive: false, value: '整層住家' },
 ]
 
+const MAP_BOUNDS = {
+  NELat: 0,
+  NELng: 0,
+  SWLat: 0,
+  SWLng: 0,
+}
+
 const initialSearchForm = {
   price: { min: MIN_VALUE, max: MAX_VALUE },
   roomAmount: AMOUNT_FILTER_LIST,
   roomType: TYPE_FILTER_LIST,
+  mapBounds: MAP_BOUNDS,
 }
 
 function House(props) {
@@ -61,7 +69,7 @@ function House(props) {
 
   return (
     <div className={cx('house')}>
-      <Map />
+      <Map result={result} setSeletedHouse={setSeletedHouse} searchForm={searchForm} setSearchForm={setSearchForm} />
       {isEmpty(seletedHouse) && (
         <Result
           result={result}
