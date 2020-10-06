@@ -74,10 +74,11 @@ function Detail(props) {
         <p className={cx('detail__button-back')} onClick={() => setSeletedHouse({})}>
           返回搜尋結果
         </p>
-        <div className={cx('detail__button-like')}>
-          <Icons.Heart className={cx('detail__button-like-icon')} />
-          收藏
-        </div>
+        {/* TODO:  還未實作收藏功能
+          <div className={cx('detail__button-like')}>
+            <Icons.Heart className={cx('detail__button-like-icon')} />
+            收藏
+          </div> */}
       </div>
       <div className={cx('detail__display')}>
         <div className={cx('detail__display-select', 'previous')} onClick={handlePreviousImage}>

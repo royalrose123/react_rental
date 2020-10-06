@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
 
 // Components
-import Icons from 'assets/icons'
+// import Icons from 'assets/icons'
 
 // Style
 import styles from './style.module.scss'
@@ -32,7 +32,8 @@ function HouseCard(props) {
   const { houseInfo, setSeletedHouse } = props
   const { roomAmount, restroomAmount, roomType, price, houseImg = [] } = houseInfo
 
-  const [isLike, setIsLike] = useState(false)
+  // TODO: 還未實作收藏功能
+  // const [isLike, setIsLike] = useState(false)
 
   const onHouseCardClick = (event) => {
     event.preventDefault()
@@ -40,11 +41,12 @@ function HouseCard(props) {
     setSeletedHouse(houseInfo)
   }
 
-  const onHeartClick = (event) => {
-    event.stopPropagation()
+  // TODO:  還未實作收藏功能
+  // const onHeartClick = (event) => {
+  //   event.stopPropagation()
 
-    setIsLike((prev) => !prev)
-  }
+  //   setIsLike((prev) => !prev)
+  // }
 
   return (
     <div className={cx('house-card')} onClick={onHouseCardClick}>
@@ -52,7 +54,9 @@ function HouseCard(props) {
         <img className={cx('house-card__display-image')} src={houseImg[0].fileUrl} />
         <div className={cx('house-card__display-row')}>
           <p className={cx('house-card__display-row-price')}>{price.toLocaleString()}</p>
-          <Icons.Heart className={cx('house-card__display-row-heart')} data-is-like={isLike} onClick={onHeartClick} />
+          {/* TODO:  還未實作收藏功能
+            <Icons.Heart className={cx('house-card__display-row-heart')} data-is-like={isLike} onClick={onHeartClick} />
+          */}
         </div>
       </div>
       <div className={cx('house-card__info')}>

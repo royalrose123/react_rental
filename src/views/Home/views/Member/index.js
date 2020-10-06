@@ -59,9 +59,11 @@ function Member(props) {
           <Button className={cx('member__main-tab-button')} type='primary' size='md' onClick={() => setCurrentTab(TAB.INFO)}>
             基本資料
           </Button>
-          <Button className={cx('member__main-tab-button')} type='primary' size='md' onClick={() => setCurrentTab(TAB.FAVORITE)}>
+          {/*  TODO:  還未實作收藏功能
+            <Button className={cx('member__main-tab-button')} type='primary' size='md' onClick={() => setCurrentTab(TAB.FAVORITE)}>
             我的最愛
-          </Button>
+            </Button>
+          */}
           <Button className={cx('member__main-tab-button')} type='primary' size='md' onClick={() => setCurrentTab(TAB.POST)}>
             我的刊登
           </Button>
