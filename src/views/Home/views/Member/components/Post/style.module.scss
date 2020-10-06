@@ -11,13 +11,13 @@
     padding: 24px;
 
     &__thumbnail{
-      margin: 0px 8px 16px 8px;
+      margin: 0px 8px 24px 8px;
 
       &-button {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-top: 16px;
+        margin-top: 12px;
       }
     }
 

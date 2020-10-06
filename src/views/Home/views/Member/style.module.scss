@@ -35,7 +35,8 @@
   &__main {
     display: flex;
     flex-direction: row;
-    margin: 60px auto;
+    justify-content: center;
+    margin: 60px 160px;
 
     &-tab {
       width: 160px;
@@ -51,7 +52,7 @@
     }
 
     &-content {
-      width: 600px;
+      width: 100%;
       height: auto;
       display: flex;
       justify-content: center;
