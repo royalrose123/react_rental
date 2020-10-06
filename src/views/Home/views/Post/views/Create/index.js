@@ -31,7 +31,13 @@ function Create(props) {
 
   return (
     <div className={cx('create')}>
-      <Form defaultValues={defaultValues} onSubmitClick={onSubmitClick} mutationHouse={addHouse} isSubmitSuccessfully={isSubmitSuccessfully} />
+      <Form
+        action='upload'
+        defaultValues={defaultValues}
+        onSubmitClick={onSubmitClick}
+        mutationHouse={addHouse}
+        isSubmitSuccessfully={isSubmitSuccessfully}
+      />
     </div>
   )
 }

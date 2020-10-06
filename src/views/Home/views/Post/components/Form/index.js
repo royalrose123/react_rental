@@ -26,13 +26,14 @@ import styles from './style.module.scss'
 const cx = classnames.bind(styles)
 
 export const propTypes = {
+  action: PropTypes.string,
   defaultValues: PropTypes.object,
   onSubmitClick: PropTypes.func,
   mutationHouse: PropTypes.func,
   isSubmitSuccessfully: PropTypes.bool,
 }
 function Form(props) {
-  const { defaultValues, onSubmitClick, mutationHouse, isSubmitSuccessfully } = props
+  const { action, defaultValues, onSubmitClick, mutationHouse, isSubmitSuccessfully } = props
   const [isShownModal, setIsShownModal] = useState(false)
 
   const history = useHistory()
@@ -222,8 +223,8 @@ function Form(props) {
         hasConfirm={isSubmitSuccessfully}
         onConfirm={handleSubmitSuccess}
       >
-        {isSubmitSuccessfully && <p>上傳成功！</p>}
-        {!isSubmitSuccessfully && <p>上傳中，請稍候...</p>}
+        {isSubmitSuccessfully && <p>{`${action === 'upload' ? '上傳' : '編輯'}成功!`}</p>}
+        {!isSubmitSuccessfully && <p>{`${action === 'upload' ? '上傳' : '編輯'}中，請稍候...!`}</p>}
       </Modal>
     </FormProvider>
   )

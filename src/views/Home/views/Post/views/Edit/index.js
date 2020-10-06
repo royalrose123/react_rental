@@ -46,7 +46,13 @@ function Edit(props) {
   return (
     <div className={cx('edit')}>
       {isLoaded && (
-        <Form defaultValues={defaultValues} onSubmitClick={onSubmitClick} mutationHouse={editHouse} isSubmitSuccessfully={isSubmitSuccessfully} />
+        <Form
+          action='edit'
+          defaultValues={defaultValues}
+          onSubmitClick={onSubmitClick}
+          mutationHouse={editHouse}
+          isSubmitSuccessfully={isSubmitSuccessfully}
+        />
       )}
     </div>
   )
