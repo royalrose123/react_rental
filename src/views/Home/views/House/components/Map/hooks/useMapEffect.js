@@ -16,6 +16,7 @@ function useMapEffect({ result, setSeletedHouse, searchForm, setSearchForm }) {
   const { mapBounds } = searchForm
   const { SWLat, SWLng, NELat, NELng } = mapBounds
 
+  // get current map bounds
   useEffect(() => {
     if (map) {
       const mapDragendEvent = map.addListener('dragend', () => {
@@ -58,6 +59,7 @@ function useMapEffect({ result, setSeletedHouse, searchForm, setSearchForm }) {
     }
   }, [map, searchForm, setSearchForm])
 
+  // add map marker
   useEffect(() => {
     if (map && result) {
       // 當 result 更新時要把原本的 marker 跟 cluster 清掉
@@ -101,6 +103,7 @@ function useMapEffect({ result, setSeletedHouse, searchForm, setSearchForm }) {
     }
   }, [map, result, setSeletedHouse])
 
+  // get user location
   useEffect(() => {
     if (isEmpty(position)) {
       window.navigator.geolocation.getCurrentPosition((position) => {
@@ -114,11 +117,12 @@ function useMapEffect({ result, setSeletedHouse, searchForm, setSearchForm }) {
     }
   }, [position])
 
+  // initaila map
   useEffect(() => {
     if (!isEmpty(position)) {
       const newMap = new window.google.maps.Map(document.getElementById('map'), {
         center: position,
-        zoom: 15,
+        zoom: 12,
         mapTypeId: 'roadmap',
       })
 
@@ -126,8 +130,8 @@ function useMapEffect({ result, setSeletedHouse, searchForm, setSearchForm }) {
     }
   }, [position])
 
+  // didmount 完後設定 map 初始的 bounds
   useEffect(() => {
-    // didmount 完後設定 map 初始的 bounds
     if (initialSWLat && SWLat === SWLng && SWLng === NELat && NELat === NELng) {
       const SWLat = map.getBounds().getSouthWest().lat()
       const SWLng = map.getBounds().getSouthWest().lng()
