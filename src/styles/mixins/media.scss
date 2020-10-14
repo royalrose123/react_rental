@@ -7,7 +7,7 @@
 
 // 平板
 @mixin tablet-media() {
-  @media screen and (min-width: $pcs-width) and (max-width: $tablet-width) {
+  @media screen and (min-width: $mobile-width) and (max-width: $tablet-width) {
     @content;
   }
 }

@@ -8,27 +8,70 @@ $sizes: (
   ),
 );
 
+$tablet-sizes: (
+  xs: (
+    width: 60px,
+  ),
+  sm: (
+    width: 84px,
+  ),
+);
+
+// sizes
+$mobile-sizes: (
+  xs: (
+    width: 48px,
+  ),
+  sm: (
+    width: 72px,
+  ),
+);
+
 .filter-button {
-    border: solid 1px $color-primary-light;
-    margin: 8px;
-    text-align: center;
-    padding: 4px 12px;
-    border-radius: 4px;
-    cursor: pointer;
+  border: solid 1px $color-primary-light;
+  margin: 8px;
+  text-align: center;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
 
-    @each $size, $properties in $sizes {
-        &[data-size='#{$size}'] {
-            width: map-get($properties, width);
-        }
+  @each $size, $properties in $sizes {
+    &[data-size='#{$size}'] {
+      width: map-get($properties, width);
     }
+  }
 
-    &[data-is-active=true] {
-        color: white;
-        background-color: $color-primary-light;
-    }
+  @include tablet-media {
+    font-size: 14px;
+    padding: 6px 4px;
+    margin: 4px;
 
-    &:hover {
-        background-color: $color-primary-light;
-        color: white;
+    @each $size, $properties in $tablet-sizes {
+      &[data-size='#{$size}'] {
+        width: map-get($properties, width);
+      }
     }
+  }
+
+  @include mobile-media {
+    font-size: 12px;
+    padding: 6px 4px;
+    margin: 4px;
+
+    @each $size, $properties in $mobile-sizes {
+      &[data-size='#{$size}'] {
+        width: map-get($properties, width);
+      }
+    }
+  }
+
+  &[data-is-active='true'] {
+    color: white;
+    background-color: $color-primary-light;
+  }
+
+  &:hover {
+    background-color: $color-primary-light;
+    color: white;
+  }
 }

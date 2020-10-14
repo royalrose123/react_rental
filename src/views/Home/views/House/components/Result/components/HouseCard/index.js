@@ -53,13 +53,13 @@ function HouseCard(props) {
       <div className={cx('house-card__display')}>
         <img className={cx('house-card__display-image')} src={houseImg[0].fileUrl} />
         <div className={cx('house-card__display-row')}>
-          <p className={cx('house-card__display-row-price')}>{price.toLocaleString()}</p>
           {/* TODO:  還未實作收藏功能
-            <Icons.Heart className={cx('house-card__display-row-heart')} data-is-like={isLike} onClick={onHeartClick} />
-          */}
+          <Icons.Heart className={cx('house-card__display-row-heart')} data-is-like={isLike} onClick={onHeartClick} />
+        */}
         </div>
       </div>
       <div className={cx('house-card__info')}>
+        <p className={cx('house-card__info-price')}>{price.toLocaleString()}</p>
         <p>{`${roomAmount}間房間, ${restroomAmount}間廁所, ${roomType}`}</p>
       </div>
     </div>

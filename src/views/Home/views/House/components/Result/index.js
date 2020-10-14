@@ -42,7 +42,6 @@ function Result(props) {
 
   return (
     <div className={cx('result')}>
-      <div>{`台北市>行政區`}</div>
       <div className={cx('filter')}>
         <div className={cx('filter-row')}>
           <p className={cx('filter-row__title')}>月租金</p>
