@@ -12,16 +12,17 @@ import styles from './style.module.scss'
 const cx = classnames.bind(styles)
 
 export const propTypes = {
+  className: PropTypes.string,
   match: PropTypes.object,
   name: PropTypes.string,
   path: PropTypes.string,
 }
 
 function NavItem(props) {
-  const { match, name, path } = props
+  const { className, match, name, path } = props
 
   return (
-    <NavLink className={cx('nav-link')} replace to={`${match.url}/${path}`}>
+    <NavLink className={cx('nav-link', className)} replace to={`${match.url}/${path}`}>
       <span className={cx('nav-link__item')}>{name}</span>
     </NavLink>
   )

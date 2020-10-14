@@ -1,0 +1,20 @@
+//手機
+@mixin mobile-media() {
+  @media screen and (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+// 平板
+@mixin tablet-media() {
+  @media screen and (min-width: $pcs-width) and (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+// // 電腦
+// @mixin pc-media() {
+//   @media screen and (min-width: $pc-width) {
+//     @content;
+//   }
+// }
