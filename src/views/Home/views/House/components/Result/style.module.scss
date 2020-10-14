@@ -108,6 +108,10 @@
     width: 100%;
     padding: 0px;
 
+    &[data-is-map='true'] {
+      display: none;
+    }
+
     &__amount {
       font-size: 14px;
     }

@@ -9,5 +9,9 @@
   @include mobile-media {
     display: none;
     width: 100%;
+
+    &[data-is-map='true'] {
+      display: block;
+    }
   }
 }

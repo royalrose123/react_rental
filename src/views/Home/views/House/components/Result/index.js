@@ -21,12 +21,13 @@ export const propTypes = {
   maxValue: PropTypes.number,
   searchForm: PropTypes.object,
   setSearchForm: PropTypes.func,
+  isMapView: PropTypes.bool,
 }
 
 const RANGE_STEP = 1000
 
 function Result(props) {
-  const { result, setSeletedHouse, minValue, maxValue, searchForm, setSearchForm } = props
+  const { result, setSeletedHouse, minValue, maxValue, searchForm, setSearchForm, isMapView } = props
 
   const { price, roomAmount, roomType } = searchForm
 
@@ -41,7 +42,7 @@ function Result(props) {
   }
 
   return (
-    <div className={cx('result')}>
+    <div className={cx('result')} data-is-map={isMapView}>
       <div className={cx('filter')}>
         <div className={cx('filter-row')}>
           <p className={cx('filter-row__title')}>月租金</p>
