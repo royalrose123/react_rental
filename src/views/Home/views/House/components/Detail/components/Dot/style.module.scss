@@ -7,7 +7,13 @@
   margin: 4px;
   cursor: pointer;
 
-  &[data-is-active='true']{
+  @include mobile-media {
+    width: 10px;
+    height: 10px;
+    margin: 2px;
+  }
+
+  &[data-is-active='true'] {
     background-color: $color-black;
   }
 }
