@@ -6,6 +6,7 @@ import { ReactComponent as Next } from './svg/next.svg'
 import { ReactComponent as Check } from './svg/check.svg'
 import { ReactComponent as Cross } from './svg/cross.svg'
 import { ReactComponent as Phone } from './svg/phone.svg'
+import { ReactComponent as Menu } from './svg/menu.svg'
 
 export default {
   NavLogo,
@@ -16,4 +17,5 @@ export default {
   Check,
   Cross,
   Phone,
+  Menu,
 }
