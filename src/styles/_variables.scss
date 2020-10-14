@@ -4,63 +4,58 @@
 
 // basic
 
-
 // $color-primary-dark                   : rgb(028, 084, 168); // #1c54a8: sapphire
-$color-primary                        : rgb(0, 169, 157);
-$color-primary-light                  : rgb(96, 201, 194); 
-$color-primary-lighter                : rgb(26, 216, 211); 
-$color-primary-lightest               : rgb(0, 255, 255);
-
+$color-primary: rgb(0, 169, 157);
+$color-primary-light: rgb(96, 201, 194);
+$color-primary-lighter: rgb(26, 216, 211);
+$color-primary-lightest: rgb(0, 255, 255);
 
 // $color-danger                         : rgb(213, 049, 049); // #d53131: reddish
 // $color-warn                           : rgb(239, 132, 060); // #ef843c: dusty-orange
 
+$color-brown: rgb(184, 115, 51);
 
-$color-brown                         : rgb(184, 115, 51);; 
+$color-danger: rgb(213, 049, 049);
+$color-danger-light: rgb(255, 0, 0);
 
+$color-white: rgb(255, 255, 255);
 
-$color-danger                         : rgb(213, 049, 049); 
-
-$color-white                                : rgb(255, 255, 255); 
-
-$color-black                                : rgb(0, 0, 0); 
-$color-black-light                          : rgb(043, 063, 087); 
+$color-black: rgb(0, 0, 0);
+$color-black-light: rgb(043, 063, 087);
 
 // $gray-darkest                         : rgb(097, 103, 111); // #61676f: slate-grey
 // $gray-darker                          : rgb(129, 136, 145); // #818891: steel
 // $gray-dark                            : rgb(170, 178, 188); // #aab2bc: light-grey-blue
-$gray-dark                            : rgb(118, 118, 118); 
-$gray                                 : rgb(128, 128, 128); 
-$gray-light                           : rgb(187, 187, 187);
-$gray-lighter                         : rgb(247, 247, 247);
+$gray-dark: rgb(118, 118, 118);
+$gray: rgb(128, 128, 128);
+$gray-light: rgb(187, 187, 187);
+$gray-lighter: rgb(247, 247, 247);
 // $gray-lightest                        : rgb(241, 243, 249); // #f1f3f9: light-pale-grey
 // $gray-white                           : rgb(255, 255, 255); // #ffffff
 // $gray-bright                          : rgb(248, 249, 251); // #f8f9fb
-
 
 //
 // Transition
 //
 
-$transition-mode                      : cubic-bezier( .25, .8, .25, 1);
-
+$transition-mode: cubic-bezier(0.25, 0.8, 0.25, 1);
 
 //
 // Texting
 //
 
-$font-family                          : "system", "-apple-system", "PingFang-TC", "Segoe UI", "Microsoft JhengHei", "Roboto", "Oxygen", "Fira Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+$font-family: 'system', '-apple-system', 'PingFang-TC', 'Segoe UI', 'Microsoft JhengHei', 'Roboto', 'Oxygen', 'Fira Sans', 'Helvetica Neue',
+  'Helvetica', 'Arial', 'sans-serif';
 
-$font-size-xxl                        : 28px;
-$font-size-xl                         : 22px;
-$font-size-lg                         : 20px;
-$font-size-md                         : 18px;
-$font-size-sm                         : 16px;
-$font-size-xs                         : 14px;
-
+$font-size-xxl: 28px;
+$font-size-xl: 22px;
+$font-size-lg: 20px;
+$font-size-md: 18px;
+$font-size-sm: 16px;
+$font-size-xs: 14px;
 
 // Responsive Width
-$tablet-width                         : 768px;
-$mobile-width                         : 375px;
-$tablet-L                             : 1024px;
-$mobile-L                             : 425px;
+$tablet-width: 768px;
+$mobile-width: 375px;
+$tablet-L: 1024px;
+$mobile-L: 425px;

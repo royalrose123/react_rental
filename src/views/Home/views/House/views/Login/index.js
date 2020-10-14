@@ -4,6 +4,11 @@ import { useHistory } from 'react-router-dom'
 import classnames from 'classnames/bind'
 import { useMutation } from '@apollo/react-hooks'
 import { useForm, FormProvider } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers'
+import { isEmpty } from 'lodash'
+
+// Libs
+import { schema } from './validation'
 
 // Components
 import Modal from 'basicComponents/Modal'
@@ -26,8 +31,10 @@ export const propTypes = {}
 function Login(props) {
   const history = useHistory()
 
-  const methods = useForm()
-  const { handleSubmit } = methods
+  const methods = useForm({ resolver: yupResolver(schema) })
+  const { handleSubmit, errors, register } = methods
+
+  console.log('errors', errors)
 
   const [isShownModal, setIsShownModal] = useState(false)
   const [isShownMessageModal, setIsShownMessageModal] = useState(false)
@@ -116,8 +123,15 @@ function Login(props) {
         <HookForm className={cx('form')}>
           <div className={cx('login')}>
             <div className={cx('login__input')}>
-              <HookForm.InputField className={cx('login__input-item')} name='email' placeholder='Email' />
-              <HookForm.InputField className={cx('login__input-item')} name='password' placeholder='******' type='password' />
+              <input className={cx('login__input-item')} ref={register} name='email' placeholder='Email' />
+              <input className={cx('login__input-item')} ref={register} name='password' placeholder='******' type='password' />
+              {!isEmpty(errors) && (
+                <div className={cx('login__input-errormessage')}>
+                  {Object.values(errors).map((item, index) => (
+                    <p key={index}>{item.message}</p>
+                  ))}
+                </div>
+              )}
             </div>
             <p className={cx('login__forget')}>忘記密碼？</p>
             <div className={cx('login__action')}>
@@ -128,11 +142,12 @@ function Login(props) {
                 登入
               </Button>
             </div>
-            <div className={cx('login__gmail')}>
+            {/* <div className={cx('login__gmail')}>
               <Button className={cx('login__gmail-button')} type='danger' size='md' isBlock>
                 Log In With Gmail
               </Button>
-            </div>
+              </div>
+            */}
           </div>
           <Modal
             className={cx('login-message')}

@@ -32,6 +32,12 @@
       padding: 4px 8px;
       margin: -1px;
     }
+
+    &-errormessage {
+      width: 100%;
+      padding: 4px 26px;
+      color: $color-danger-light;
+    }
   }
 
   &__forget {
@@ -53,7 +59,7 @@
     padding: 0px 32px;
     margin: 8px 0px;
 
-    &-button{
+    &-button {
       display: flex;
       justify-content: center;
       align-items: center;
