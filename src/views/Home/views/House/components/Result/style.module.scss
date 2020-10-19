@@ -92,3 +92,69 @@
     }
   }
 }
+
+@include tablet-media {
+  .result {
+    width: 380px;
+
+    &__amount {
+      font-size: 14px;
+    }
+  }
+}
+
+@include mobile-media {
+  .result {
+    width: 100%;
+    padding: 0px;
+
+    &[data-is-map='true'] {
+      display: none;
+    }
+
+    &__amount {
+      font-size: 14px;
+    }
+  }
+
+  .filter {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 8px;
+    font-size: 12px;
+
+    &-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-bottom: solid 1px $gray-light;
+
+      &__title {
+        width: 24%;
+        font-size: 12px;
+      }
+
+      &__rent {
+        margin: 12px;
+        padding: 8px;
+
+        &-slider {
+        }
+
+        &-track {
+        }
+
+        &-value {
+        }
+
+        &-label {
+        }
+      }
+
+      &__button-wrapper {
+        width: 76%;
+        margin: 4px;
+      }
+    }
+  }
+}

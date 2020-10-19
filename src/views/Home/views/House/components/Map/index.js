@@ -18,14 +18,15 @@ export const propTypes = {
   setSeletedHouse: PropTypes.func,
   searchForm: PropTypes.object,
   setSearchForm: PropTypes.func,
+  isMapView: PropTypes.bool,
 }
 
 function Map(props) {
-  const { result, setSeletedHouse, searchForm, setSearchForm } = props
+  const { result, setSeletedHouse, searchForm, setSearchForm, isMapView } = props
 
   useMapEffect({ result, setSeletedHouse, searchForm, setSearchForm })
 
-  return <div id='map' className={cx('map')} />
+  return <div id='map' className={cx('map')} data-is-map={isMapView} />
 }
 
 Map.propTypes = propTypes

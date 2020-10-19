@@ -3,4 +3,27 @@
   height: 100%;
   display: flex;
   flex-direction: row;
+
+  &-icon {
+    display: none;
+
+    @include mobile-media {
+      display: flex;
+      width: 40px;
+      height: 40px;
+      padding: 2px;
+      border: 1px solid $gray;
+      fill: $gray;
+      border-radius: 50%;
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      cursor: pointer;
+
+      &[data-is-actived='true'] {
+        background-color: $color-primary-lighter;
+        fill: $color-white;
+      }
+    }
+  }
 }
