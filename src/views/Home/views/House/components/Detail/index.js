@@ -30,10 +30,11 @@ export const propTypes = {
   others: PropTypes.object,
   houseImg: PropTypes.array,
   setSeletedHouse: PropTypes.func,
+  isMapView: PropTypes.bool,
 }
 
 function Detail(props) {
-  const { postId, price, city, distinct, address, houseDetail, surrounding, device, others, houseImg, setSeletedHouse } = props
+  const { postId, price, city, distinct, address, houseDetail, surrounding, device, others, houseImg, setSeletedHouse, isMapView } = props
 
   const history = useHistory()
 
@@ -69,7 +70,7 @@ function Detail(props) {
   }
 
   return (
-    <div className={cx('detail')}>
+    <div className={cx('detail')} data-is-map={isMapView}>
       <div className={cx('detail__button')}>
         <p className={cx('detail__button-back')} onClick={() => setSeletedHouse({})}>
           返回搜尋結果

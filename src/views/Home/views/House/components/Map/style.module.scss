@@ -1,4 +1,17 @@
 .map {
   width: calc(100% - 600px);
   height: calc(100vh - 60px);
+
+  @include tablet-media {
+    width: calc(100% - 380px);
+  }
+
+  @include mobile-media {
+    display: none;
+    width: 100%;
+
+    &[data-is-map='true'] {
+      display: block;
+    }
+  }
 }

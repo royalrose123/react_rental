@@ -10,6 +10,7 @@ import { isEmpty } from 'lodash'
 import Map from './components/Map'
 import Result from './components/Result'
 import Detail from './components/Detail'
+import Icons from 'assets/icons'
 
 // Style
 import styles from './style.module.scss'
@@ -62,6 +63,7 @@ function House(props) {
 
   const [seletedHouse, setSeletedHouse] = useState({})
   const [searchForm, setSearchForm] = useState(initialSearchForm)
+  const [isMapView, setIsMapView] = useState(false) // for mobile view
 
   const { data } = useQuery(HOUSE_LIST, { variables: { ...searchForm }, fetchPolicy: 'network-only' })
 
@@ -69,7 +71,7 @@ function House(props) {
 
   return (
     <div className={cx('house')}>
-      <Map result={result} setSeletedHouse={setSeletedHouse} searchForm={searchForm} setSearchForm={setSearchForm} />
+      <Map result={result} setSeletedHouse={setSeletedHouse} searchForm={searchForm} setSearchForm={setSearchForm} isMapView={isMapView} />
       {isEmpty(seletedHouse) && (
         <Result
           result={result}
@@ -78,9 +80,11 @@ function House(props) {
           setSearchForm={setSearchForm}
           minValue={MIN_VALUE}
           maxValue={MAX_VALUE}
+          isMapView={isMapView}
         />
       )}
-      {!isEmpty(seletedHouse) && <Detail setSeletedHouse={setSeletedHouse} {...seletedHouse} />}
+      {!isEmpty(seletedHouse) && <Detail setSeletedHouse={setSeletedHouse} {...seletedHouse} isMapView={isMapView} />}
+      <Icons.Map className={cx('house-icon')} data-is-actived={isMapView} onClick={() => setIsMapView((pre) => !pre)} />
       <Switch>
         <Route strict sensitive path={`${match.url}/:postId/info`} component={Info} />
         <Route strict sensitive path={`${match.url}/login`} component={Login} />
