@@ -19,6 +19,9 @@ export const USER = gql`
       displayName
       photoURL
       phoneNumber
+      userLikeHouse {
+        postId
+      }
     }
   }
 `
