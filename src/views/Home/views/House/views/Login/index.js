@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 // import PropTypes from 'prop-types'
 import classnames from 'classnames/bind'
@@ -44,15 +44,9 @@ function Login(props) {
   const [createUser] = useMutation(CREATE_USER, { errorPolicy: 'all' })
   const [login] = useMutation(LOGIN, { errorPolicy: 'all' })
 
-  const isFirstRef = useRef(true)
-
   useEffect(() => {
-    if (isFirstRef.current && isShownModal) {
-      isFirstRef.current = false
-    } else {
-      setIsShownModal(true)
-    }
-  }, [isFirstRef, isShownModal, setIsShownModal])
+    setIsShownModal(true)
+  }, [])
 
   const handleCreateUser = (data) => {
     createUser({ variables: { ...data } }).then((result) => {
