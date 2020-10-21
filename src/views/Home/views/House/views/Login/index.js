@@ -34,8 +34,6 @@ function Login(props) {
   const methods = useForm({ resolver: yupResolver(schema) })
   const { handleSubmit, errors, register } = methods
 
-  console.log('errors', errors)
-
   const [isShownModal, setIsShownModal] = useState(false)
   const [isShownMessageModal, setIsShownMessageModal] = useState(false)
   const [isShownErrorModal, setIsShownErrorModal] = useState(false)
@@ -88,15 +86,7 @@ function Login(props) {
       } else {
         const { data } = result
         const { login } = data
-        const { token, displayName, email, phoneNumber, photoURL, userId } = login
-
-        const userInfo = {
-          displayName,
-          email,
-          phoneNumber,
-          photoURL,
-          userId,
-        }
+        const { token, ...userInfo } = login
 
         window.localStorage.setItem('token', token)
         window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
