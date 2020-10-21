@@ -26,6 +26,18 @@ function Post(props) {
 
   const history = useHistory()
   const token = window.localStorage.getItem('token')
+  const userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+  const { gender } = userInfo || {} // 因為 gmail 註冊會員會自動有 displayName，所以用 gender 判斷是否填過會員資料
+
+  const isValidUser = token && gender
+
+  const handleModalConfirm = () => {
+    if (token) {
+      history.push('/home/member')
+    } else {
+      history.push('/home/house')
+    }
+  }
 
   return (
     <div className={cx('post')}>
@@ -33,16 +45,18 @@ function Post(props) {
         <img className={cx('post__poster-image')} src={postPosterImage} />
         <div className={cx('post__poster-title')}>房屋刊登</div>
       </div>
-      {token && (
+      {isValidUser && (
         <Switch>
           <Route strict sensitive path={`${match.url}/create`} component={Create} />
           <Route strict sensitive path={`${match.url}/:postId/edit`} component={Edit} />
           <Redirect push from='/' to={`${match.url}/create`} />
         </Switch>
       )}
-      <Modal className={cx('post-modal')} isShown={!token} title='Remind' hasCancel={false} onConfirm={() => history.push('/home/house')}>
-        請先登入或註冊會員
-      </Modal>
+      {!isValidUser && (
+        <Modal className={cx('post-modal')} isShown={!isValidUser} title='Remind' hasCancel={false} onConfirm={handleModalConfirm}>
+          {token ? '請先填寫會員資料' : '請先登入或註冊會員'}
+        </Modal>
+      )}
     </div>
   )
 }
