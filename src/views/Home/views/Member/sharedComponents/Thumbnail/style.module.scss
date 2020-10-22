@@ -40,3 +40,19 @@
     }
   }
 }
+
+@include mobile-media {
+  .thumbnail {
+    width: 140px;
+    height: 140px;
+
+    &__display {
+      height: 80px;
+
+      &-price {
+        bottom: 4px;
+        font-size: 18px;
+      }
+    }
+  }
+}

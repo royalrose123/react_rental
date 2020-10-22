@@ -60,3 +60,31 @@
     }
   }
 }
+
+@include mobile-media {
+  .member {
+    &__poster {
+      height: 220px;
+    }
+
+    &__main {
+      flex-direction: column-reverse;
+      align-items: center;
+      margin: 16px 0px;
+
+      &-tab {
+        width: 80%;
+        height: 100%;
+        border-top: 1px solid $gray-light;
+
+        margin: 8px;
+        padding: 16px;
+
+        &-button {
+          width: 96px;
+          margin: 8px 0px;
+        }
+      }
+    }
+  }
+}

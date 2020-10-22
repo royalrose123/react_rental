@@ -10,7 +10,7 @@
     flex-wrap: wrap;
     padding: 24px;
 
-    &__thumbnail{
+    &__thumbnail {
       margin: 0px 8px 24px 8px;
 
       &-button {
@@ -21,6 +21,10 @@
 
         &-item {
           width: 80px;
+
+          @include mobile-media {
+            width: 60px;
+          }
         }
       }
     }
