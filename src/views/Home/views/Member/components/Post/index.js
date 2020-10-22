@@ -32,10 +32,15 @@ function Post(props) {
               <div key={index} className={cx('post-list__thumbnail')}>
                 <Thumbnail {...item} />
                 <div className={cx('post-list__thumbnail-button')}>
-                  <Button type='primary' size='xs' onClick={() => history.push(`/home/post/${item.postId}/edit`)}>
+                  <Button
+                    className={cx('post-list__thumbnail-button-item')}
+                    type='primary'
+                    size='xs'
+                    onClick={() => history.push(`/home/post/${item.postId}/edit`)}
+                  >
                     修改
                   </Button>
-                  <Button type='primary' size='xs'>
+                  <Button className={cx('post-list__thumbnail-button-item')} type='primary' size='xs'>
                     刪除
                   </Button>
                 </div>

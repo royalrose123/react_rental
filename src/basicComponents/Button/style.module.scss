@@ -2,22 +2,22 @@
 $types: (
   default: (
     border-color: $color-black,
-    background-color:  $color-white,
-    color:  $color-black,
+    background-color: $color-white,
+    color: $color-black,
   ),
   primary: (
     border-color: $color-primary-light,
-    background-color:  $color-primary-lighter,
+    background-color: $color-primary-lighter,
     color: $color-white,
   ),
   danger: (
     border-color: $color-danger,
-    background-color:  $color-danger,
+    background-color: $color-danger,
     color: $color-white,
   ),
   brown: (
     border-color: $color-brown,
-    background-color:  $color-brown,
+    background-color: $color-brown,
     color: $color-white,
   ),
 );
@@ -25,22 +25,18 @@ $types: (
 // sizes
 $sizes: (
   xs: (
-    width: 80px,
     height: 28px,
     font-size: $font-size-xs,
   ),
   sm: (
-    width: 90px,
     height: 30px,
     font-size: $font-size-sm,
   ),
   md: (
-    width: 96px,
     height: 34px,
     font-size: $font-size-sm,
   ),
   lg: (
-    width: 110px,
     height: 38px,
     font-size: $font-size-md,
   ),
@@ -51,8 +47,6 @@ $sizes: (
   border-style: solid;
   border-radius: 6px;
 
-  
-
   @each $type, $styles in $types {
     &[data-type='#{$type}'] {
       border-color: map-get($styles, border-color);
@@ -60,7 +54,6 @@ $sizes: (
       color: map-get($styles, color);
     }
   }
-
 
   @each $size, $styles in $sizes {
     &[data-size='#{$size}'] {
@@ -74,5 +67,4 @@ $sizes: (
     display: flex;
     width: 100%;
   }
-
 }

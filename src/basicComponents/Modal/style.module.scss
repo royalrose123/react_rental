@@ -38,8 +38,7 @@
       display: flex;
       justify-content: center;
 
-      &-text{
-
+      &-text {
         font-size: 22px;
         color: $gray;
       }
@@ -61,7 +60,8 @@
     align-items: center;
     border-top: 1px solid $gray-light;
 
-    &-button{
+    &-button {
+      width: 90px;
       margin: 4px;
     }
   }

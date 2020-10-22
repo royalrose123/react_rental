@@ -212,7 +212,12 @@ function Form(props) {
           </FieldItem>
         </Row>
         <div className={cx('form-submit')}>
-          <Button type='primary' htmlType='submit' onClick={handleSubmit((data) => onSubmitClick(data, setIsShownModal, mutationHouse))}>
+          <Button
+            className={cx('form-submit-button')}
+            type='primary'
+            htmlType='submit'
+            onClick={handleSubmit((data) => onSubmitClick(data, setIsShownModal, mutationHouse))}
+          >
             刊登
           </Button>
         </div>

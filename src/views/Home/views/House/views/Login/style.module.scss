@@ -52,6 +52,10 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 8px 32px;
+
+    &-button {
+      width: 110px;
+    }
   }
 
   &__gmail {
