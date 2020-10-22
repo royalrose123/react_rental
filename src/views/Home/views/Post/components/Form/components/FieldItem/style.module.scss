@@ -4,6 +4,11 @@
   align-items: center;
   margin-right: 8px;
 
+  @include mobile-media {
+    margin: 8px 0px;
+    width: 100%;
+  }
+
   &-title {
     margin: 6px;
     display: inline-table;

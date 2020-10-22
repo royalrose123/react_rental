@@ -154,16 +154,20 @@ function Form(props) {
         </Row>
         <Row>
           <FieldItem title='其他' width='80px'>
-            <HookForm.CheckboxField name='kitchen' label='廚房' group='others' />
-            <HookForm.CheckboxField name='elevator' label='電梯' group='others' />
+            <div className={cx('form-checkbox-wrapper')}>
+              <HookForm.CheckboxField name='kitchen' label='廚房' group='others' />
+              <HookForm.CheckboxField name='elevator' label='電梯' group='others' />
+            </div>
           </FieldItem>
         </Row>
         <Row>
           <FieldItem title='費用包含' width='80px'>
-            <HookForm.CheckboxField name='associationFee' label='管理費' group='priceInclude' />
-            <HookForm.CheckboxField name='cleaningFee' label='清潔費' group='priceInclude' />
-            <HookForm.CheckboxField name='waterBill' label='水費' group='priceInclude' />
-            <HookForm.CheckboxField name='networkBill' label='網路費' group='priceInclude' />
+            <div className={cx('form-checkbox-wrapper')}>
+              <HookForm.CheckboxField name='associationFee' label='管理費' group='priceInclude' />
+              <HookForm.CheckboxField name='cleaningFee' label='清潔費' group='priceInclude' />
+              <HookForm.CheckboxField name='waterBill' label='水費' group='priceInclude' />
+              <HookForm.CheckboxField name='networkBill' label='網路費' group='priceInclude' />
+            </div>
           </FieldItem>
         </Row>
         <Row>

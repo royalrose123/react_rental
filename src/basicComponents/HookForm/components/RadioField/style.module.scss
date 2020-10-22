@@ -1,7 +1,9 @@
 .radio-wrapper {
-    margin-right: 16px;   
+  margin-right: 16px;
 }
 
 .radio {
-    margin-right: 4px;   
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 4px;
 }

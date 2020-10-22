@@ -3,4 +3,9 @@
   flex-direction: row;
   align-items: center;
   margin: 16px 0;
+
+  @include mobile-media {
+    flex-direction: column;
+    margin: 8px 0;
+  }
 }
