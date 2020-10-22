@@ -10,5 +10,15 @@
     height: 16px;
     margin-right: 8px;
   }
+}
 
+@include mobile-media {
+  .device {
+    width: 100px;
+
+    &-icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
 }

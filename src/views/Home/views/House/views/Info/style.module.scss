@@ -9,10 +9,9 @@
   &-left {
     width: 600px;
     padding: 16px 8px 16px 16px;
-    box-sizing: content-box;
 
     &__display {
-      width: 600px;
+      width: 100%;
       height: auto;
       position: relative;
       margin-bottom: 16px;
@@ -148,6 +147,7 @@
       &-textarea {
         width: 100%;
         height: 120px;
+        padding: 8px;
       }
 
       &-submit {
@@ -242,6 +242,144 @@
           font-size: 28px;
           color: $color-white;
           margin-left: 8px;
+        }
+      }
+    }
+  }
+}
+
+@include mobile-media {
+  .info {
+    flex-direction: column-reverse;
+
+    &-left {
+      width: 100%;
+      padding: 16px;
+
+      &__display {
+        &-select {
+          width: 36px;
+          height: 280px;
+
+          &-icon {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        &-image {
+          height: 280px;
+        }
+      }
+
+      &__require {
+        &-row {
+          margin: 16px;
+
+          &-item {
+            font-size: 14px;
+
+            &-title {
+              width: 72px;
+            }
+          }
+        }
+      }
+
+      &__device {
+        padding: 8px 0px;
+
+        &-title {
+          font-size: 16px;
+          margin: 8px 16px;
+        }
+      }
+
+      &__section {
+        padding: 8px 0px;
+
+        &-title {
+          font-size: 16px;
+          margin: 8px 16px;
+        }
+
+        &-content {
+          font-size: 14px;
+        }
+      }
+
+      &__ask {
+        padding: 4px 0px;
+
+        &-text {
+          margin: 8px 0px;
+        }
+      }
+
+      &__question {
+        &-title {
+          margin: 8px 0px;
+        }
+      }
+    }
+
+    &-right {
+      width: 100%;
+      padding: 8px;
+
+      &__info {
+        &-price {
+          height: 32px;
+          margin-bottom: 4px;
+          align-items: baseline;
+
+          &-number {
+            height: 32px;
+            font-size: 28px;
+            margin-right: 2px;
+          }
+
+          &-unit {
+            font-size: 14px;
+          }
+        }
+
+        &-row {
+          font-size: 14px;
+          padding: 4px 6px;
+        }
+      }
+
+      &__landlord {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 8px 20px;
+
+        &-avatar {
+          flex-direction: column;
+
+          &-icon {
+            width: 52px;
+            height: 52px;
+          }
+
+          &-name {
+            margin-left: 0px;
+          }
+        }
+
+        &-phone {
+          width: 64%;
+          height: 48px;
+
+          &-icon {
+            width: 24px;
+            height: 24px;
+          }
+
+          &-number {
+            font-size: 24px;
+          }
         }
       }
     }
